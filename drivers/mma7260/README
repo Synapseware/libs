@@ -1,0 +1,8 @@
+The MMA7260Q requires a 3.3v supply.
+
+Drag pin low to sleep the device or bring high to wake it up.
+
+Gain is highest when GS1 and GS2 are either let float or brought low.
+
+
+Setup ADC to run in free-running mode,
