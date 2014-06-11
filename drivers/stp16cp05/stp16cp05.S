@@ -9,84 +9,86 @@
  */ 
 
 
+.section .text
 ; ================================================================================================
 ;   REGISTER  DEFINITIONS
 ; ================================================================================================
-.DEF	rREAD_ADDR				= r9
-.DEF	rPWM_VAL				= r18
-.DEF	rACTIVE_LED				= r19
-.DEF	rOFFSET					= r20
-.DEF	rSTP_LOOP				= r21
-.DEF	rSTP_BIT				= r22
-.DEF	rSTP_DATA				= r23
+#define work                    r16
+#define temp                    r17
+#define rREAD_ADDR              r9
+#define rPWM_VAL                r18
+#define rACTIVE_LED             r19
+#define rOFFSET                 r20
+#define rSTP_LOOP               r21
+#define rSTP_BIT                r22
+#define rSTP_DATA               r23
 
 
 ; ================================================================================================
 ;	CONSTANTS
 ; ================================================================================================
-.EQU	STP16_TOTAL_CHANNELS		= 32
-.EQU	STP16_BITS_PER_CHIP			= 16
-.EQU	STP16_TOTAL_CHIPS			= STP16_TOTAL_CHANNELS / STP16_BITS_PER_CHIP
-.EQU	STP16_BRT_STEPS				= 8					; # of graduations between 0 and 255 we care about
-.EQU	STP16_DATA_START			= 0x00				; Starting EEPROM address for brightness data
-.EQU	STP16_DDR					= DDRD
-.EQU	STP16_PORT					= PORTD
-.EQU	STP16_PINS					= PIND
-.EQU	STP16_OE					= PORTD6			; When low, output circuits respond to data
-.EQU	STP16_LE					= PORTD3			; When low, latch circuits hold previous data
-.EQU	STP16_CLK					= PORTD4			; Chips read serial data on 1->0 clock transition
-.EQU	STP16_DATA					= PORTD5			; Write data while clock line is low only
+STP16_TOTAL_CHANNELS		= 32
+STP16_BITS_PER_CHIP			= 16
+STP16_TOTAL_CHIPS			= STP16_TOTAL_CHANNELS / STP16_BITS_PER_CHIP
+STP16_BRT_STEPS				= 8					; # of graduations between 0 and 255 we care about
+STP16_DATA_START			= 0x00				; Starting EEPROM address for brightness data
+STP16_DDR					= DDRD
+STP16_PORT					= PORTD
+STP16_PINS					= PIND
+STP16_OE					= PORTD6			; When low, output circuits respond to data
+STP16_LE					= PORTD3			; When low, latch circuits hold previous data
+STP16_CLK					= PORTD4			; Chips read serial data on 1->0 clock transition
+STP16_DATA					= PORTD5			; Write data while clock line is low only
 
 
 ; ================================================================================================
 ;	DATA SEGMENT
 ; ===============================================================================================
-.DSEG
-	DIRECTION:			.db			0
-	PWM_VAL:			.db			0
-	ACTIVE_LED:			.db			0
-	OFFSET:				.db			0
+.section .data
+	DIRECTION:			.byte			0
+	PWM_VAL:			.byte			0
+	ACTIVE_LED:			.byte			0
+	OFFSET:				.byte			0
 
 
 ; ================================================================================================
 ; MOCK-SERIAL DATA
 ; ================================================================================================
-.CSEG
+.section .text
 
 
 ; ================================================================================================
 ; Prepare the LED driver chain
 ; ================================================================================================
 STP16_Init:
-	push	rmp
-	push	rtmp
+	push	work
+	push	temp
 
 	; setup DDR port
-	ldi		rmp, (1<<STP16_OE) | (1<<STP16_LE) | (1<<STP16_CLK) | (1<<STP16_DATA)
-	in		rtmp, STP16_DDR
-	or		rtmp, rmp
-	out		STP16_DDR, rtmp
+	in		work, _SFR_IO_ADDR(STP16_DDR)
+	ori		work, (1<<STP16_OE) | (1<<STP16_LE) | (1<<STP16_CLK) | (1<<STP16_DATA)
+	out		STP16_DDR, work
 
 	; setup default I/O line values
-	in		rmp, STP16_PORT
-	ori		rmp, (1<<STP16_OE) | (1<<STP16_LE)
-	andi	rmp, ~((1<<STP16_CLK) | (1<<STP16_DATA))
-	out		STP16_PORT, rmp
+	in		work, _SFR_IO_ADDR(STP16_PORT)
+	ori		work, (1<<STP16_OE) | (1<<STP16_LE)
+	andi	work, ~((1<<STP16_CLK) | (1<<STP16_DATA))
+	out		_SFR_IO_ADDR(STP16_PORT), work
 
 	; setup intial data values
-	ldi		rmp, 0
-	sts		DIRECTION, rmp
-	sts		PWM_VAL, rmp
-	sts		ACTIVE_LED, rmp
-	sts		OFFSET, rmp
+	ldi		work, 0
+	sts		DIRECTION, work
+	sts		PWM_VAL, work
+	sts		ACTIVE_LED, work
+	sts		OFFSET, work
 
 	clr		rACTIVE_LED
 	clr		rSTP_LOOP
 	clr		rSTP_BIT
 	clr		rSTP_DATA
 
-	pop		rtmp
-	pop		rmp
+	pop		temp
+	pop		work
 	ret
 
 
@@ -104,8 +106,8 @@ STP16_Init:
 ;		32 channels * 2 chips * 16 bits pers per chip * 256/8 brightness levels * 60Hz = 
 ; ================================================================================================
 STP16_Refresh:
-	push	rmp
-	push	rtmp
+	push	work
+	push	temp
 	push	XH
 	push	XL
 	push	ZH
@@ -113,11 +115,11 @@ STP16_Refresh:
 
 	; setup initializes the chip count and toggles the OE and LE control lines for the chips
 	; this loop should be called as frequently as possible!
-	ldi		rmp, STP16_TOTAL_CHIPS
-	mov		r10, rmp						; r10 tracks the number of chips
+	ldi		work, STP16_TOTAL_CHIPS
+	mov		r10, work						; r10 tracks the number of chips
 	mov		rACTIVE_LED, rOFFSET
-	sbi		STP16_PORT, STP16_OE			; disable output
-	cbi		STP16_PORT, STP16_LE			; disable data latch
+	sbi		_SFR_IO_ADDR(STP16_PORT), STP16_OE			; disable output
+	cbi		_SFR_IO_ADDR(STP16_PORT), STP16_LE			; disable data latch
 
 	add		rPWM_VAL, STP16_BRT_STEPS		; increase brightness steps each loop
 
@@ -126,10 +128,10 @@ STP16_Refresh:
 	; this loop is basically a bit-pump for the 2 STP16CP05 chips
 	; there will be 2 * 16 enumerations (2 chips, 16 bits each)
 	_stp_chip_loop:
-		ldi		rmp, 0xFF
-		mov		r12, rmp					; r12 tracks if an LED was used on the chip for each loop
-		ldi		rmp, STP16_BITS_PER_CHIP
-		mov		r11, rmp					; r11 tracks the bits per chip
+		ldi		work, 0xFF
+		mov		r12, work					; r12 tracks if an LED was used on the chip for each loop
+		ldi		work, STP16_BITS_PER_CHIP
+		mov		r11, work					; r11 tracks the bits per chip
 
 		; this loop walks all the bits that the current chip supports
 		; it starts by setting up the brightness buffer data address and reading in the brightness data
@@ -139,14 +141,14 @@ STP16_Refresh:
 		; next, it checks to see if it has already displayed a value for this chip, if it has, then it zero's out the brightness data
 		; finally, it checks if the value is non-zero, and sets the data line accordingly, then triggers the clock line
 		_stp_bit_loop:
-			out		EEARL, rACTIVE_LED		; Set default EEPROM address in address register
-			sbi		EECR, EERE				; load the brightness data for the active LED from EEPROM
-			in		rSTP_DATA, EEDR
+			out		_SFR_IO_ADDR(EEARL), rACTIVE_LED		; Set default EEPROM address in address register
+			sbi		_SFR_IO_ADDR(EECR), _SFR_IO_ADDR(EERE)	; load the brightness data for the active LED from EEPROM
+			in		rSTP_DATA, _SFR_IO_ADDR(EEDR)
 
 			inc		rACTIVE_LED
 			andi	rACTIVE_LED, STP16_TOTAL_CHANNELS - 1
 
-			cbi		STP16_PORT, STP16_CLK	; bring clock line low (move this instruction around to give different timing values for HIGH-LOW transition)
+			cbi		_SFR_IO_ADDR(STP16_PORT), STP16_CLK	; bring clock line low (move this instruction around to give different timing values for HIGH-LOW transition)
 
 			cp		rPWM_VAL, rSTP_DATA
 			brlo	_stp_bit_loop_2
@@ -159,33 +161,33 @@ STP16_Refresh:
 			rjmp	_stp_bit_loop_L
 
 		_stp_bit_loop_H:
-			sbi		STP16_PORT, STP16_DATA
+			sbi		_SFR_IO_ADDR(STP16_PORT), STP16_DATA
 			;clr		r12						; clear r12 to signal an LED enabled event
 			rjmp	_stp_bit_loop_3
 
 		_stp_bit_loop_L:
-			cbi		STP16_PORT, STP16_DATA
+			cbi		_SFR_IO_ADDR(STP16_PORT), STP16_DATA
 			rjmp	_stp_bit_loop_3
 
 		_stp_bit_loop_3:
-			sbi		STP16_PORT, STP16_CLK	; bring clock line high
+			sbi		_SFR_IO_ADDR(STP16_PORT), STP16_CLK	; bring clock line high
 			dec		r11						; complete bit loop
 			brne	_stp_bit_loop
 
 		dec		r10							; complete chip loop
 		brne	_stp_chip_loop
 
-	sbi		STP16_PORT, STP16_LE			; enable data latch
-	cbi		STP16_PORT, STP16_OE			; enable output
-	cbi		STP16_PORT, STP16_CLK			; bring clock line low
-	cbi		STP16_PORT, STP16_LE			; disable data latch
+	sbi		_SFR_IO_ADDR(STP16_PORT), STP16_LE			; enable data latch
+	cbi		_SFR_IO_ADDR(STP16_PORT), STP16_OE			; enable output
+	cbi		_SFR_IO_ADDR(STP16_PORT), STP16_CLK			; bring clock line low
+	cbi		_SFR_IO_ADDR(STP16_PORT), STP16_LE			; disable data latch
 
 	pop		ZL
 	pop		ZH
 	pop		XL
 	pop		XH
-	pop		rtmp
-	pop		rmp
+	pop		temp
+	pop		work
 
 	ret
 
@@ -197,7 +199,7 @@ STP16_Refresh:
 ; Pass new direction value in r16
 ; ================================================================================================
 STP16_SetDirection:
-	sts		DIRECTION, rmp
+	sts		DIRECTION, work
 	ret
 
 
@@ -205,8 +207,8 @@ STP16_SetDirection:
 ; Updates the offset (which causes the rotation effect)
 ; ================================================================================================
 STP16_UpdateOffset:
-	lds		rmp, DIRECTION
-	tst		rmp
+	lds		work, DIRECTION
+	tst		work
 	brne	_offset_left
 _offset_right:
 	inc		rOFFSET
@@ -220,8 +222,8 @@ _offset_done:
 
 
 ; ================================================================================================
-; Returns the STP16 driver channel count (total # of bits available) in the rmp register
+; Returns the STP16 driver channel count (total # of bits available) in the work register
 ; ================================================================================================
 STP16_GetChannelCount:
-	ldi		rmp, STP16_TOTAL_CHANNELS
+	ldi		work, STP16_TOTAL_CHANNELS
 	ret
