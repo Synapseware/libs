@@ -1,3 +1,5 @@
+#include <avr/io.h>
+#include <avr/eeprom.h>
 /*
  * stp16cp05.asm
  *
@@ -32,9 +34,9 @@ STP16_BITS_PER_CHIP			= 16
 STP16_TOTAL_CHIPS			= STP16_TOTAL_CHANNELS / STP16_BITS_PER_CHIP
 STP16_BRT_STEPS				= 8					; # of graduations between 0 and 255 we care about
 STP16_DATA_START			= 0x00				; Starting EEPROM address for brightness data
-STP16_DDR					= DDRD
-STP16_PORT					= PORTD
-STP16_PINS					= PIND
+#define STP16_DDR			DDRD
+#define STP16_PORT			PORTD
+#define STP16_PINS			PIND
 STP16_OE					= PORTD6			; When low, output circuits respond to data
 STP16_LE					= PORTD3			; When low, latch circuits hold previous data
 STP16_CLK					= PORTD4			; Chips read serial data on 1->0 clock transition
@@ -45,14 +47,14 @@ STP16_DATA					= PORTD5			; Write data while clock line is low only
 ;	DATA SEGMENT
 ; ===============================================================================================
 .section .data
-	DIRECTION:			.byte			0
-	PWM_VAL:			.byte			0
-	ACTIVE_LED:			.byte			0
-	OFFSET:				.byte			0
+DIRECTION:			.byte			0
+PWM_VAL:			.byte			0
+ACTIVE_LED:			.byte			0
+OFFSET:				.byte			0
 
 
 ; ================================================================================================
-; MOCK-SERIAL DATA
+; C O D E  S E G M E N T
 ; ================================================================================================
 .section .text
 
@@ -65,12 +67,12 @@ STP16_Init:
 	push	temp
 
 	; setup DDR port
-	in		work, _SFR_IO_ADDR(STP16_DDR)
+	in		work, _SFR_IO_ADDR(DDRD)
 	ori		work, (1<<STP16_OE) | (1<<STP16_LE) | (1<<STP16_CLK) | (1<<STP16_DATA)
 	out		STP16_DDR, work
 
 	; setup default I/O line values
-	in		work, _SFR_IO_ADDR(STP16_PORT)
+	in		work, STP16_PORT
 	ori		work, (1<<STP16_OE) | (1<<STP16_LE)
 	andi	work, ~((1<<STP16_CLK) | (1<<STP16_DATA))
 	out		_SFR_IO_ADDR(STP16_PORT), work
@@ -142,7 +144,7 @@ STP16_Refresh:
 		; finally, it checks if the value is non-zero, and sets the data line accordingly, then triggers the clock line
 		_stp_bit_loop:
 			out		_SFR_IO_ADDR(EEARL), rACTIVE_LED		; Set default EEPROM address in address register
-			sbi		_SFR_IO_ADDR(EECR), _SFR_IO_ADDR(EERE)	; load the brightness data for the active LED from EEPROM
+			sbi		_SFR_IO_ADDR(EECR), EERE				; load the brightness data for the active LED from EEPROM
 			in		rSTP_DATA, _SFR_IO_ADDR(EEDR)
 
 			inc		rACTIVE_LED
