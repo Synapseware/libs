@@ -1,5 +1,4 @@
-#include <avr/io.h>
-#include <avr/eeprom.h>
+#include "stp16cp05.h"
 /*
  * stp16cp05.asm
  *
