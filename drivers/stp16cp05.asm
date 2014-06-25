@@ -1,3 +1,4 @@
+<<<<<<< HEAD:drivers/stp16cp05.asm
 ; ================================================================================================
 ; stp16cp05.asm
 ;
@@ -7,6 +8,18 @@
 ;	 stp16cp05 driver file
 ;   contains functions which allow the system to write data to the LED driver chips
 ; ================================================================================================
+=======
+#include "stp16cp05.h"
+/*
+ * stp16cp05.asm
+ *
+ *  Created: 6/20/2012 8:52:38 AM
+ *   Author: Matthew
+ *
+ *	 stp16cp05 driver file
+ *   contains functions which allow the system to write data to the LED driver chips
+ */ 
+>>>>>>> 34f407daacbc43785ce19b8e764c400b95df1cb4:drivers/stp16cp05/stp16cp05.S
 
 
 ; ================================================================================================
