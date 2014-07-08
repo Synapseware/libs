@@ -7,12 +7,6 @@
 
 
 ; ================================================================================================
-;   REGISTER  DEFINITIONS
-; ================================================================================================
-.DEF	rUSI_DATA		= r21
-
-
-; ================================================================================================
 ;	CONSTANTS
 ; ================================================================================================
 .ifdef ATTINY2313
@@ -112,6 +106,7 @@ ISR_USIStart:
 ; When enabled, this will act as our receive-data interrupt
 ; ================================================================================================
 ISR_USIOverflow:
+	push	rtmp
 	push	rmp
 	in		rmp, SREG
 	push	rmp
@@ -134,10 +129,10 @@ ISR_USIOverflow:
 	rjmp	_SET_USI_TO_USI_START_CONDITION_MODE
 
 _USI_SLAVE_CHECK_ADDRESS:
-	in		rUSI_DATA, USIDR
-	cpi		rUSI_DATA, TW_ADDRESS
+	in		rtmp, USIDR
+	cpi		rtmp, TW_ADDRESS
 	breq	_usi_addrcmp1					; successful address match
-	;tst		rUSI_DATA
+	;tst		rtmp
 	;breq	_usi_addrcmp1					; TWI broadcast address (?)
 
 _SET_USI_TO_USI_START_CONDITION_MODE:
@@ -161,7 +156,7 @@ _USI_SLAVE_REQUEST_DATA:
 	rjmp	_usi_done
 
 _USI_SLAVE_GET_DATA_AND_SEND_ACK:
-	in		rUSI_DATA, USIDR
+	in		rtmp, USIDR
 	ldi		rmp, USI_SLAVE_REQUEST_DATA
 	sts		USI_STATUS, rmp
 	rcall	USI_SendACK
@@ -173,7 +168,7 @@ _USI_SLAVE_GET_DATA_AND_SEND_ACK:
 	rcall	USI_PrepareZForReceive
 
 	; store the TWI data
-	st		Z, rUSI_DATA
+	st		Z, rtmp
 	pop		ZL
 	pop		ZH
 
@@ -195,6 +190,7 @@ _usi_done:
 	pop		rmp
 	out		SREG, rmp
 	pop		rmp
+	pop		rtmp
 	reti
 
 
