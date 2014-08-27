@@ -3,7 +3,6 @@
 volatile static event_t		_events[MAX_EVENT_RECORDS];
 volatile static uint8_t		_total		= 0;
 volatile static uint16_t	_timeBase	= 0;
-volatile static uint8_t		_eventTick	= 0;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
@@ -20,7 +19,7 @@ void removeEvent(uint8_t index)
 		// copy events & slide them down
 		for (; index <_total - 1; index++)
 		{
-			_events[index].delay	= _events[index+1].delay;
+			_events[index].interval	= _events[index+1].interval;
 			_events[index].flags	= _events[index+1].flags;
 			_events[index].next		= _events[index+1].next;
 			_events[index].func		= _events[index+1].func;
@@ -28,11 +27,11 @@ void removeEvent(uint8_t index)
 		}
 	}
 
-	_events[index].func		= 0;
-	_events[index].delay	= 0;
-	_events[index].flags	= 0;
-	_events[index].next		= 0;
-	_events[index].state	= 0;
+	_events[index].func			= 0;
+	_events[index].interval		= 0;
+	_events[index].flags		= 0;
+	_events[index].next			= 0;
+	_events[index].state		= 0;
 
 	_total--;
 }
@@ -42,6 +41,7 @@ void removeEvent(uint8_t index)
 // Preserves the time base, which is the number of eventSync calls per second.
 void setTimeBase(uint16_t timeBase)
 {
+	// save the time base
 	_timeBase = timeBase;
 }
 
@@ -50,40 +50,39 @@ void setTimeBase(uint16_t timeBase)
 // Returns the timebase value
 uint16_t getTimeBase(void)
 {
+	// time base
 	return _timeBase;
 }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
-// Sets the event flags for the main processing thread
+// Sets the event flags for the main processing thread and runs high priority events.  This
+// should be called by the ISR for the timer that is driving the event system.
 void eventSync(void)
 {
-	_eventTick = 1;
 	for (uint8_t i = 0; i < _total; i++)
 	{
-		// skip any event that doesn't have a function pointer
-		if (!_events[i].func)
-			continue;
+		event_t * event = &_events[i];
 
 		// decrement events that haven't hit their schedule yet
-		if (_events[i].next > 1)
+		if (event->next > 0)
 		{
-			_events[i].next--;
+			event->next--;
 			continue;
 		}
 
+		// reset event interval
+		event->next = event->interval;
+
 		// process high-priority events
-		if ((_events[i].flags & (1<<EVENT_PRIORITY_HIGH)))
+		if ((event->flags & (1<<EVENT_PRIORITY_HIGH)))
 		{
-			_events[i].func(_events[i].state);
+			event->func(event->state);
 		}
 		else
 		{
-			_events[i].flags |= (1<<EVENT_FLAG_PROCESS);
+			event->flags |= (1<<EVENT_FLAG_PROCESS);
 		}
-
-		// reset event delay
-		_events[i].next = _events[i].delay;
 	}
 }
 
@@ -92,45 +91,44 @@ void eventSync(void)
 // Processes the events that are ready
 void eventsDoEvents(void)
 {
-	if (0 == _eventTick)
-	return;
-
 	for (uint8_t i = 0; i < _total; i++)
 	{
-		// skip null-events
-		if (!_events[i].func)
-			continue;
+		event_t * event = &_events[i];
 
-		// skip processed events
-		if (!(_events[i].flags & (1<<EVENT_FLAG_PROCESS)))
+		// skip null or already processed events
+		if (!(event->flags & (1<<EVENT_FLAG_PROCESS)))
 			continue;
 
 		// skip high-priority events
-		if ((_events[i].flags & (1<<EVENT_PRIORITY_HIGH)))
+		if ((event->flags & (1<<EVENT_PRIORITY_HIGH)))
 			continue;
 
-		// process event!  :)
-		_events[i].flags &= ~(1<<EVENT_FLAG_PROCESS);
-		_events[i].func(_events[i].state);
+		// process event
+		if (event->func)
+			event->func(event->state);
+
+		// mark event as processed
+		event->flags &= ~(1<<EVENT_FLAG_PROCESS);
 
 		// remove one-shot events
-		if (0 != (_events[i].flags & (1<<EVENT_FLAG_ONESHOT)))
+		if (0 != (event->flags & (1<<EVENT_FLAG_ONESHOT)))
 			removeEvent(i);
 	}
-
-	_eventTick = 0;
 }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
 // Register a normal priority event
-void registerEvent(fEventCallback fptr, uint16_t delay, eventState_t state)
+void registerEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
 {
-	_events[_total].flags	= (1<<EVENT_FLAG_REPEATING);
-	_events[_total].delay	= delay;
-	_events[_total].next	= delay;
-	_events[_total].func	= fptr;
-	_events[_total].state	= state;
+	if (0 == fptr)
+		return;
+
+	_events[_total].flags		= (1<<EVENT_FLAG_REPEATING);
+	_events[_total].interval	= interval;
+	_events[_total].next		= interval;
+	_events[_total].func		= fptr;
+	_events[_total].state		= state;
 
 	_total++;
 }
@@ -139,27 +137,33 @@ void registerEvent(fEventCallback fptr, uint16_t delay, eventState_t state)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
 // Register a high priority event.  High priority events run on the same thread
 // as the eventSync.
-void registerHighPriorityEvent(fEventCallback fptr, uint16_t delay, eventState_t state)
+void registerHighPriorityEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
 {
-	_events[_total].flags	= (1<<EVENT_FLAG_REPEATING) | (1<<EVENT_PRIORITY_HIGH);
-	_events[_total].delay	= delay;
-	_events[_total].next	= delay;
-	_events[_total].func	= fptr;
-	_events[_total].state	= state;
+	if (0 == fptr)
+		return;
+
+	_events[_total].flags		= (1<<EVENT_FLAG_REPEATING) | (1<<EVENT_PRIORITY_HIGH);
+	_events[_total].interval	= interval;
+	_events[_total].next		= interval;
+	_events[_total].func		= fptr;
+	_events[_total].state		= state;
 
 	_total++;
 }
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
-// One shot events run after a specific delay, and are then removed
-void registerOneShot(fEventCallback fptr, uint16_t delay, eventState_t state)
+// One shot events run after a specific interval, and are then removed
+void registerOneShot(fEventCallback fptr, uint16_t interval, eventState_t state)
 {
-	_events[_total].flags	= (1<<EVENT_FLAG_ONESHOT);
-	_events[_total].delay	= delay;
-	_events[_total].next	= delay;
-	_events[_total].func	= fptr;
-	_events[_total].state	= state;
+	if (0 == fptr)
+		return;
+
+	_events[_total].flags		= (1<<EVENT_FLAG_ONESHOT);
+	_events[_total].interval	= interval;
+	_events[_total].next		= interval;
+	_events[_total].func		= fptr;
+	_events[_total].state		= state;
 
 	_total++;
 }
@@ -183,11 +187,11 @@ void eventsUnregisterAll(void)
 {
 	for (uint8_t i = 0; i < MAX_EVENT_RECORDS; i++)
 	{
-		_events[i].func		= 0;
-		_events[i].delay	= 0;
-		_events[i].flags	= 0;
-		_events[i].next		= 0;
-		_events[i].state	= 0;
+		_events[i].func			= 0;
+		_events[i].interval		= 0;
+		_events[i].flags		= 0;
+		_events[i].next			= 0;
+		_events[i].state		= 0;
 	}
 
 	_total = 0;

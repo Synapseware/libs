@@ -34,7 +34,7 @@ typedef void (*fEventCallback)(eventState_t);
 typedef struct
 {
 	fEventCallback	func;
-	uint16_t		delay;
+	uint16_t		interval;
 	uint16_t		next;
 	flags_t			flags;
 	eventState_t	state;
