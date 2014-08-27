@@ -1,8 +1,8 @@
 #include "events.h"
 
-volatile static event_t		_events[MAX_EVENT_RECORDS];
-volatile static uint8_t		_total		= 0;
-volatile static uint16_t	_timeBase	= 0;
+static event_t		_events[MAX_EVENT_RECORDS];
+static uint8_t		_total		= 0;
+static uint16_t	_timeBase	= 0;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
@@ -117,6 +117,17 @@ void eventsDoEvents(void)
 }
 
 
+uint16_t fixInterval(uint16_t interval)
+{
+	while (interval > _timeBase && _timeBase > 0)
+	{
+		interval -= _timeBase;
+	}
+
+	return interval;
+}
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
 // Register a normal priority event
 void registerEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
@@ -125,7 +136,7 @@ void registerEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
 		return;
 
 	_events[_total].flags		= (1<<EVENT_FLAG_REPEATING);
-	_events[_total].interval	= interval;
+	_events[_total].interval	= fixInterval(interval);
 	_events[_total].next		= interval;
 	_events[_total].func		= fptr;
 	_events[_total].state		= state;
@@ -143,7 +154,7 @@ void registerHighPriorityEvent(fEventCallback fptr, uint16_t interval, eventStat
 		return;
 
 	_events[_total].flags		= (1<<EVENT_FLAG_REPEATING) | (1<<EVENT_PRIORITY_HIGH);
-	_events[_total].interval	= interval;
+	_events[_total].interval	= fixInterval(interval);
 	_events[_total].next		= interval;
 	_events[_total].func		= fptr;
 	_events[_total].state		= state;
@@ -160,7 +171,7 @@ void registerOneShot(fEventCallback fptr, uint16_t interval, eventState_t state)
 		return;
 
 	_events[_total].flags		= (1<<EVENT_FLAG_ONESHOT);
-	_events[_total].interval	= interval;
+	_events[_total].interval	= fixInterval(interval);
 	_events[_total].next		= interval;
 	_events[_total].func		= fptr;
 	_events[_total].state		= state;
