@@ -1,13 +1,26 @@
 #include "events.h"
 
-static event_t		_events[MAX_EVENT_RECORDS];
-static uint8_t		_total		= 0;
-static uint16_t	_timeBase	= 0;
 
+// --------------------------------------------------------------------------------
+Events::Events(uint8_t totalEvents)
+{
+	_events		= (event_t*) calloc(totalEvents, sizeof(event_t));
+	_total		= totalEvents;
+	_timeBase	= 0;
+	_count		= 0;
+}
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
+// Destructor
+Events::~Events(void)
+{
+
+	free(_events);
+}
+
+// --------------------------------------------------------------------------------
 // Removes an event from the list
-void removeEvent(uint8_t index)
+void Events::removeEvent(uint8_t index)
 {
 	// bounds check
 	if (index >= _total || _total == 0)
@@ -37,28 +50,28 @@ void removeEvent(uint8_t index)
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // Preserves the time base, which is the number of eventSync calls per second.
-void setTimeBase(uint16_t timeBase)
+void Events::setTimeBase(uint16_t timeBase)
 {
 	// save the time base
 	_timeBase = timeBase;
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // Returns the timebase value
-uint16_t getTimeBase(void)
+uint16_t Events::getTimeBase(void)
 {
 	// time base
 	return _timeBase;
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // Sets the event flags for the main processing thread and runs high priority events.  This
 // should be called by the ISR for the timer that is driving the event system.
-void eventSync(void)
+void Events::eventSync(void)
 {
 	for (uint8_t i = 0; i < _total; i++)
 	{
@@ -87,9 +100,9 @@ void eventSync(void)
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // Processes the events that are ready
-void eventsDoEvents(void)
+void Events::eventsDoEvents(void)
 {
 	for (uint8_t i = 0; i < _total; i++)
 	{
@@ -117,7 +130,7 @@ void eventsDoEvents(void)
 }
 
 
-uint16_t fixInterval(uint16_t interval)
+uint16_t Events::fixInterval(uint16_t interval)
 {
 	while (interval > _timeBase && _timeBase > 0)
 	{
@@ -128,9 +141,9 @@ uint16_t fixInterval(uint16_t interval)
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // Register a normal priority event
-void registerEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
+void Events::registerEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
 {
 	if (0 == fptr)
 		return;
@@ -145,10 +158,10 @@ void registerEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // Register a high priority event.  High priority events run on the same thread
 // as the eventSync.
-void registerHighPriorityEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
+void Events::registerHighPriorityEvent(fEventCallback fptr, uint16_t interval, eventState_t state)
 {
 	if (0 == fptr)
 		return;
@@ -163,9 +176,9 @@ void registerHighPriorityEvent(fEventCallback fptr, uint16_t interval, eventStat
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // One shot events run after a specific interval, and are then removed
-void registerOneShot(fEventCallback fptr, uint16_t interval, eventState_t state)
+void Events::registerOneShot(fEventCallback fptr, uint16_t interval, eventState_t state)
 {
 	if (0 == fptr)
 		return;
@@ -180,9 +193,9 @@ void registerOneShot(fEventCallback fptr, uint16_t interval, eventState_t state)
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // Removes an event from the event list and frees up it's allocation
-void eventsUnregisterEvent(fEventCallback fprt)
+void Events::eventsUnregisterEvent(fEventCallback fprt)
 {
 	for (uint8_t i = 0; i < _total; i++)
 	{
@@ -192,9 +205,9 @@ void eventsUnregisterEvent(fEventCallback fprt)
 }
 
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - -
+// --------------------------------------------------------------------------------
 // Unregisters all the events
-void eventsUnregisterAll(void)
+void Events::eventsUnregisterAll(void)
 {
 	for (uint8_t i = 0; i < MAX_EVENT_RECORDS; i++)
 	{

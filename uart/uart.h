@@ -15,6 +15,11 @@
 
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 typedef void (*uart_rx_callback_t)(char);
 typedef void (*uart_tx_callback_t)(void);
 typedef void (*uart_asyncCallback_t)(void);
@@ -41,5 +46,9 @@ void uartSendBuff(const char * buffer, uint16_t length);
 void uartReceiveBuff(char * buffer, uint16_t length);
 
 void uart_init(void);
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif
