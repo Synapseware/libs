@@ -56,11 +56,11 @@ public:
 	// the event sync should be called by a timer event handler.
 	// it's job is to flag registered events that need to be executed
 	// events are co-operative
-	void eventSync(void);
+	void sync(void);
 
 	// this method should be called whenever there are spare
 	// cycles to execute pending events
-	void eventsDoEvents(void);
+	void doEvents(void);
 
 	// updates the specified event with new state information
 	void eventsUpdateState(uint8_t eventIndex, eventState_t newState);

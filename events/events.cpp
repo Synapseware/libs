@@ -71,7 +71,7 @@ uint16_t Events::getTimeBase(void)
 // --------------------------------------------------------------------------------
 // Sets the event flags for the main processing thread and runs high priority events.  This
 // should be called by the ISR for the timer that is driving the event system.
-void Events::eventSync(void)
+void Events::sync(void)
 {
 	for (uint8_t i = 0; i < _total; i++)
 	{
@@ -102,7 +102,7 @@ void Events::eventSync(void)
 
 // --------------------------------------------------------------------------------
 // Processes the events that are ready
-void Events::eventsDoEvents(void)
+void Events::doEvents(void)
 {
 	for (uint8_t i = 0; i < _total; i++)
 	{
