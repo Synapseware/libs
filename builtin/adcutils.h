@@ -13,9 +13,12 @@
 #define ADC_SAMPLE_MAX				1024
 
 // define ADC analog reference constants
-const uint8_t VREF_AVCC				= 0x00;
-const uint8_t VREF_AREF				= 0x01;
-const uint8_t VREF_11				= 0x03;
+#if defined (__AVR_ATmega168__) || defined (__AVR_ATmega168A__) || defined (__AVR_ATmega168P__)
+#  include "adcutils_m168.h"
+#elif defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny25__)
+#  include "adcutils_tx5.h"
+#endif
+
 
 class Adc
 {
