@@ -21,7 +21,7 @@ void Adc::setAdcChannelAndVRef(uint8_t channel, uint8_t vref)
 #elif defined(__AVR_ATtiny85__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny25__)
 	ADMUX = (ADMUX & 0x20) |			// clear REFS2:0
 			(channel & 0x0F) |			// set the channel #
-			((vref & 0x04) << 4)		// set REFS2
+			((vref & 0x04) << 4) |		// set REFS2
 			((vref & 0x03) << 6);		// set REFS1:0
 
 	//attinyx5 has crazy stupid digital input disable mappings...  :(
