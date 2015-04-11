@@ -5,8 +5,9 @@
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Initialize the RGB Effects with required data values
-void RGB::initialize(pixel_t* pixel)
+RGB::RGB(Events* events, pixel_t* pixel)
 {
+	_events = events;
 	_ioPixel = pixel;
 }
 
@@ -71,13 +72,13 @@ void RGB::fade(pixel_t * fadeFrom, pixel_t * fadeTo, const uint16_t delay)
 	_effectsPixel.blu = _ioPixel->blu;
 
 	// wait for fade to complete
-	registerEvent(e_fadeCallback, stepDelay, this);
+	_events->registerEvent(e_fadeCallback, stepDelay, this);
 	while (_fadeSteps > 0)
 	{
 		wdt_reset();
-		eventsDoEvents();
+		_events->doEvents();
 	}
-	eventsUnregisterEvent(e_fadeCallback);
+	_events->eventsUnregisterEvent(e_fadeCallback);
 }
 
 

@@ -23,7 +23,8 @@ public:
 	};
 
 
-	void initialize(pixel_t* ioPixel);
+	RGB(Events* events, pixel_t* ioPixel);
+
 	void fadeIn(uint8_t red, uint8_t green, uint8_t blue, const uint16_t delay);
 	void fadeOut(const uint16_t delay);
 	void fadeTo(uint8_t red, uint8_t green, uint8_t blue, const uint16_t delay);
@@ -59,6 +60,7 @@ private:
 	uint8_t getMinimumSteps(factors_t* effects);
 
 	// private object data
+	Events*				_events;
 	factors_t			_effectsPixel;
 	factors_t			_fadeFactors;
 	pixel_t*			_ioPixel;

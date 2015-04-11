@@ -8,6 +8,12 @@
 #include <stdint.h>
 
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Set and clear bits in a register
 void setBitsInRegister(uint8_t port, uint8_t mask);
@@ -54,5 +60,9 @@ int16_t to_int16(uint16_t ux);
 uint8_t to_uint8(int8_t sx);
 uint16_t to_uint16(int16_t sx);
 
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif
