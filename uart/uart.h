@@ -20,6 +20,7 @@ typedef void (*uart_tx_callback_t)(void);
 typedef void (*uart_asyncCallback_t)(void);
 typedef char (*uart_readCallback_t)(void);
 
+
 class Uart
 {
 public:

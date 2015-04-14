@@ -479,14 +479,15 @@ void ee_putBytesEnd(void)
 	//i2cWaitForComplete();
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 void ee_poll(void)
 {
 	/*
-ACKNOWLEDGE POLLING: Once the internally timed write cycle has started and the
-EEPROM inputs are disabled, acknowledge polling can be initiated. This involves sending a
-start condition followed by the device address word. The read/write bit is representative of the
-operation desired. Only if the internal write cycle has completed will the EEPROM respond with
-a zero, allowing the read or write sequence to continue.
+	ACKNOWLEDGE POLLING: Once the internally timed write cycle has started and the
+	EEPROM inputs are disabled, acknowledge polling can be initiated. This involves sending a
+	start condition followed by the device address word. The read/write bit is representative of the
+	operation desired. Only if the internal write cycle has completed will the EEPROM respond with
+	a zero, allowing the read or write sequence to continue.
 	*/
 
 	while(1)

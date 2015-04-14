@@ -10,6 +10,10 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 // SPI Port definitions
 #if defined (__AVR_ATmega328P__) || defined (__AVR_ATmega328__) || defined (__AVR_ATmega168__) || defined (__AVR_ATmega88__) || defined (__AVR_ATmega48__)
@@ -102,5 +106,8 @@ void SPI_WriteBytesA(uint8_t * pdata, uint16_t length, spi_tx_callback_t onCompl
 
 
 
+#ifdef  __cplusplus
+}
+#endif
 
 #endif /* SPI_H_ */

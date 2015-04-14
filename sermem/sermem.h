@@ -32,19 +32,59 @@
 
 
 
+class Sermem
+{
+public:
+	Sermem(Uart* uart);
+	void showHelp(void);
+	uint8_t putFile(void);
+	uint8_t getFile(void);
+	void format(void);
+	void writeCannedData(void);
+	void putstr(const char * pstr);
+	void process(char data);
 
+private:
+	// Gets another byte to send
+	void getFileCallback(void)
+	{
+		_bytesTransfered++;
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-void spie_init(void);
-void spie_showHelp(void);
-uint8_t spie_putFile(void);
-uint8_t spie_getFile(void);
-void spie_format(void);
-void spie_writeCannedData(void);
-void spie_putstr(const char * pstr);
-void spie_process(char data);
+		// get our data byte
+		uint8_t data = ee_read();
 
+		// on the 256th byte, reset the count, terminate the async transmit
+		if (_bytesTransfered >= AT24C1024_PAGE_SIZE)
+		{
+			// reset the byte count
+			_bytesTransfered = 0;
+			_transferPageComplete = 1;
 
+			// disable the async transmit
+			_uart->endTransmit();
+		}
+		else
+		{
+			// decrement total transfer size
+			_transferSize--;
+
+			// write the byte we've read
+			_uart->write(data);
+		}
+	}
+
+	Uart*		_uart;
+	uint8_t		_transferPageComplete;
+	uint16_t	_bytesTransfered;
+	uint32_t	_transferSize;
+
+	uint8_t		_autoMode;
+
+	uint8_t		last_rx;
+	uint8_t		last_tx;
+	uint8_t		rx_complete;
+	uint8_t		tx_complete;
+};
 
 
 #endif

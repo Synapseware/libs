@@ -10,6 +10,10 @@
 #endif
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //---------------------------------------------------------------------------
 // Setup AT24C1024B info
 #define AT24C1024_ADDRESS		0b10100000
@@ -74,5 +78,9 @@ uint8_t eeFormatPage(uint16_t page);
 void ee_init(unsigned short bitrateKHz);
 
 
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif
