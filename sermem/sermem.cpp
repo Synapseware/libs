@@ -260,7 +260,7 @@ void Sermem::putstr(const char * pstr)
 {
 	if (_autoMode)
 		return;
-	_uart->putstrAM(pstr, 0);
+	_uart->putstr(pstr);
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

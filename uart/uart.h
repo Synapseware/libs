@@ -23,6 +23,7 @@ public:
 	typedef void (*uart_asyncCallback_t)(void);
 	typedef char (*uart_readCallback_t)(void);
 
+	typedef char (*f_reader_t)(volatile const char**);
 
 
 	Uart(void);

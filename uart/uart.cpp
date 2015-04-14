@@ -6,8 +6,6 @@
 
 #include "uart.h"
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-typedef char (*f_reader_t)(volatile const char**);
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,6 +66,15 @@ void Uart::putstr(const char * pstr)
 	while (0 != (data = *pstr++))
 		write(data);
 }
+
+// writes a string from program memory
+void Uart::putstrM(const char * pstr)
+{
+	char data;
+	while (0 != (data = pgm_read_byte(pstr++)))
+		write(data);
+}
+
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // gets a string of the specified size and stores it in SRAM at pstr
