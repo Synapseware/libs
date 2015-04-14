@@ -12,7 +12,7 @@
 
 #include "../drivers/at24c/at24c.h"
 #include "../uart/uart.h"
-
+#include "../events/events.h"
 
 
 #define CMD_ACK					'A'
@@ -31,11 +31,11 @@
 #define TRANSFER_SUCCESS		0x01
 
 
-
 class Sermem
 {
 public:
 	Sermem(Uart* uart);
+	void init(void);
 	void showHelp(void);
 	uint8_t putFile(void);
 	uint8_t getFile(void);
@@ -43,35 +43,9 @@ public:
 	void writeCannedData(void);
 	void putstr(const char * pstr);
 	void process(char data);
+	void getFileCallback(void);
 
 private:
-	// Gets another byte to send
-	void getFileCallback(void)
-	{
-		_bytesTransfered++;
-
-		// get our data byte
-		uint8_t data = ee_read();
-
-		// on the 256th byte, reset the count, terminate the async transmit
-		if (_bytesTransfered >= AT24C1024_PAGE_SIZE)
-		{
-			// reset the byte count
-			_bytesTransfered = 0;
-			_transferPageComplete = 1;
-
-			// disable the async transmit
-			_uart->endTransmit();
-		}
-		else
-		{
-			// decrement total transfer size
-			_transferSize--;
-
-			// write the byte we've read
-			_uart->write(data);
-		}
-	}
 
 	Uart*		_uart;
 	uint8_t		_transferPageComplete;
@@ -85,6 +59,7 @@ private:
 	uint8_t		rx_complete;
 	uint8_t		tx_complete;
 };
+
 
 
 #endif

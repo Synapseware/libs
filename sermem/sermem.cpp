@@ -2,11 +2,30 @@
 
 
 
+
+void getFileCallbackHandler(eventState_t state)
+{
+	if (0 == state)
+		return;
+
+	Sermem * obj = (Sermem*)state;
+	obj->getFileCallback();
+}
+
+
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Sermem::Sermem(Uart* uart)
 {
 	_uart = uart;
 
+	init();
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+void Sermem::init(void)
+{
 	_transferPageComplete	= 0;
 	_bytesTransfered		= 0;
 	_transferSize			= 0;
@@ -113,6 +132,35 @@ uint8_t Sermem::putFile()
 	return TRANSFER_SUCCESS;
 }
 
+// Gets another byte to send
+void Sermem::getFileCallback(void)
+{
+	_bytesTransfered++;
+
+	// get our data byte
+	uint8_t data = ee_read();
+
+	// on the 256th byte, reset the count, terminate the async transmit
+	if (_bytesTransfered >= AT24C1024_PAGE_SIZE)
+	{
+		// reset the byte count
+		_bytesTransfered = 0;
+		_transferPageComplete = 1;
+
+		// disable the async transmit
+		_uart->endTransmit();
+	}
+	else
+	{
+		// decrement total transfer size
+		_transferSize--;
+
+		// write the byte we've read
+		_uart->write(data);
+	}
+}
+
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Reads all the data from the chip and sends it to the host
 // HOST:  This device
@@ -159,8 +207,8 @@ uint8_t Sermem::getFile(void)
 		ee_setpage(page++);
 
 		// enable async transmit
-		//TODO: Rewire the callback function...
-		//_uart->beginTransmit(&Sermem::getFileCallback);
+		//TODO: GetfileCallback is busted...
+		//_uart->beginTransmit(getFileCallbackHandler);
 
 		// send first byte to start async transmit routine
 		_uart->write(ee_read());

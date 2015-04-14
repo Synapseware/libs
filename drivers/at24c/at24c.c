@@ -418,7 +418,6 @@ void ee_readBytesA(uint16_t page, uint16_t length, uint8_t * data, fStatusCallba
 	_asyncStep		= ASYNC_MULTI_START;
 
 
-	_onComplete = callBack;
 	ee_readBytesHandler();
 }
 

@@ -15,15 +15,16 @@
 
 
 
-typedef void (*uart_rx_callback_t)(char);
-typedef void (*uart_tx_callback_t)(void);
-typedef void (*uart_asyncCallback_t)(void);
-typedef char (*uart_readCallback_t)(void);
-
-
 class Uart
 {
 public:
+	typedef void (*uart_rx_callback_t)(char);
+	typedef void (*uart_tx_callback_t)(void);
+	typedef void (*uart_asyncCallback_t)(void);
+	typedef char (*uart_readCallback_t)(void);
+
+
+
 	Uart(void);
 	void putstr(const char* pstr);
 	void putstrM(const char* pstr);
