@@ -36,7 +36,7 @@ void Uart::beginReceive(uart_rx_callback_t callBack)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // ends asynchronous receive mode
-void Uart::endReceive()
+void Uart::endReceive(void)
 {
 	UCSR0B &= ~(1<<RXCIE0);
 	_uart_rx_callback = 0;
@@ -52,7 +52,7 @@ void Uart::beginTransmit(uart_tx_callback_t callBack)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // ends asynchronous transmit mode
-void Uart::endTransmit()
+void Uart::endTransmit(void)
 {
 	UCSR0B &= ~(1<<TXCIE0);
 	_uart_tx_callback = 0;
@@ -127,7 +127,7 @@ char Uart::read(void)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-uint8_t Uart::dataWaiting()
+uint8_t Uart::dataWaiting(void)
 {
 	// returns 0 if no data waiting
 	return (UCSR0A & (1<<RXC0));
@@ -156,7 +156,7 @@ void Uart::receiveBuff(char * buffer, uint16_t length)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Initialize the USART/UART
-void Uart::init()
+void Uart::init(void)
 {
 #if defined (serial_led_en) && defined (serial_led_off)
 	serial_led_en();

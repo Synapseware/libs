@@ -63,13 +63,6 @@ private:
 	}
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	// writes a string from program memory
-	void uart_putstrM(const char * pstr)
-	{
-		char data;
-		while (0 != (data = pgm_read_byte(pstr++)))
-			write(data);
-	}
 	void uart_putstrAMHandler(void)
 	{
 		char data = pgm_read_byte(_txAsyncData++);
