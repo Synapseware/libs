@@ -67,6 +67,7 @@ void Uart::putstr(const char * pstr)
 		write(data);
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // writes a string from program memory
 void Uart::putstrM(const char * pstr)
 {
@@ -74,7 +75,6 @@ void Uart::putstrM(const char * pstr)
 	while (0 != (data = pgm_read_byte(pstr++)))
 		write(data);
 }
-
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // gets a string of the specified size and stores it in SRAM at pstr
@@ -108,6 +108,8 @@ void Uart::write(char data)
 	UDR0 = data;
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// 
 void Uart::asyncRead(uint8_t data)
 {
 	// terminate async receive	
@@ -188,13 +190,12 @@ void Uart::receiveHandler(char data)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Should be called by the UART TX ISR
-char Uart::transmitHandler(void)
+void Uart::transmitHandler(void)
 {
 	if (_uart_tx_callback)
 		_uart_tx_callback();
-
-	return 0;
 }
+
 /*
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // receive buffer interrupt vector
@@ -215,13 +216,15 @@ ISR(USART_RX_vect)
 // transmit interrupt vector
 ISR(USART_TX_vect)
 {
-#ifdef serial_led_on
+	#ifdef serial_led_on
 	serial_led_on();
-#endif
-	if (_uart_tx_callback)
-		_uart_tx_callback();
-#ifdef serial_led_off
+	#endif
+
+	if (_thisUart)
+		_thisUart->transmitHandler();
+
+	#ifdef serial_led_off
 	serial_led_off();
-#endif
+	#endif
 }
 */

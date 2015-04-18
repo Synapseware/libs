@@ -48,7 +48,7 @@ public:
 	void receiveBuff(char * buffer, uint16_t length);
 
 	void receiveHandler(char data);
-	char transmitHandler(void);
+	void transmitHandler(void);
 
 	void init(void);
 
@@ -89,7 +89,6 @@ private:
 
 		write(pgm_read_byte(_txAsyncData++));
 	}
-
 
 
 	uart_tx_callback_t		_uart_tx_callback;

@@ -140,57 +140,57 @@ void ee_setPageAHandler(void)
 		// send start signal
 		case ASYNC_SEND_START:
 			_asyncStep = ASYNC_SEND_DEVICE;
-			i2cSendStartAsync(ee_setPageAHandler);
-			break;
+			i2cSendStartAsync(&ee_setPageAHandler);
+			return;
 
 		// send device address with write
 		case ASYNC_SEND_DEVICE:
 			if (i2cGetStatus() != TW_START)
 			{
 				_asyncError();
-				break;
+				return;
 			}
 
 			_asyncStep = ASYNC_SEND_ADDRMSB;
-			i2cSendByteAsync(_device & I2C_WRITE, ee_setPageAHandler);
-			break;
+			i2cSendByteAsync(_device & I2C_WRITE, &ee_setPageAHandler);
+			return;
 
 		// send address MSB
 		case ASYNC_SEND_ADDRMSB:
 			if (i2cGetStatus() != TW_MT_SLA_ACK)
 			{
 				_asyncError();
-				break;
+				return;
 			}
 
 			_asyncStep = ASYNC_SEND_ADDRLSB;
-			i2cSendByteAsync(_address >> 8, ee_setPageAHandler);
-			break;
+			i2cSendByteAsync(_address >> 8, &ee_setPageAHandler);
+			return;
 
 		// send address LSB
 		case ASYNC_SEND_ADDRLSB:
 			if (i2cGetStatus() != TW_MT_DATA_ACK)
 			{
 				_asyncError();
-				break;
+				return;
 			}
 
 			_asyncStep = ASYNC_SEND_STOP;
-			i2cSendByteAsync(_address & 0xff, ee_setPageAHandler);
-			break;
+			i2cSendByteAsync(_address & 0xff, &ee_setPageAHandler);
+			return;
 
 		// end the transaction
 		case ASYNC_SEND_STOP:
 			if (i2cGetStatus() != TW_MT_DATA_ACK)
 			{
 				_asyncError();
-				break;
+				return;
 			}
 
 			i2cSendStop();
 
 			_eeComplete(0);
-			break;
+			return;
 	}
 }
 void ee_setpageA(uint16_t page, fStatusCallback callBack)
