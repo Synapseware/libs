@@ -13,6 +13,8 @@
 #include <types.h>
 #include "../asyncTypes.h"
 
+// ugh...
+#include "../../core/board.h"
 
 
 class Uart
@@ -27,6 +29,8 @@ public:
 
 
 	Uart(void);
+	void init(void);
+
 	void putstr(const char* pstr);
 	void putstrM(const char* pstr);
 	void putstrAM(const char * pstr, uart_asyncCallback_t callBack);
@@ -42,15 +46,12 @@ public:
 	void write(char x);
 	uint8_t dataWaiting(void);
 	char read(void);
-	void asyncRead(uint8_t data);
 
 	void sendBuff(const char * buffer, uint16_t length);
 	void receiveBuff(char * buffer, uint16_t length);
 
 	void receiveHandler(char data);
 	void transmitHandler(void);
-
-	void init(void);
 
 private:
 	inline char sram_read(const char** buff)
@@ -100,8 +101,6 @@ private:
 	uart_asyncCallback_t	_txAsyncCallback;
 	uart_asyncCallback_t	_rxAsyncCallback;
 
-	char*					_rxAsyncData;
-	uint16_t				_rxAsyncLen;
 	char					_uartReceiveData;
 };
 

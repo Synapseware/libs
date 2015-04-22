@@ -23,9 +23,29 @@ Uart::Uart(void)
 	_txAsyncCallback	= 0;
 	_rxAsyncCallback	= 0;
 
-	_rxAsyncData		= 0;
-	_rxAsyncLen			= 0;
-	_uartReceiveData	= 0;
+	UCSR0A = 0;
+	UCSR0B = 0;
+	UCSR0C = 0;
+
+	// set baud values from macro
+	UBRR0H = UBRRH_VALUE;
+	UBRR0L = UBRRL_VALUE;
+
+	// enable uart RX and TX
+	UCSR0B = (1<<RXEN0) | (1<<TXEN0);
+
+	// set 8N1 frame format
+	UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Initialize the USART/UART
+void Uart::init(void)
+{
+	#if defined (serial_led_en) && defined (serial_led_off)
+	serial_led_en();
+	serial_led_off();
+	#endif
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -111,16 +131,6 @@ void Uart::write(char data)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// 
-void Uart::asyncRead(uint8_t data)
-{
-	// terminate async receive	
-	endReceive();
-
-	_uartReceiveData = data;	
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Reads a byte of data from the UART.
 char Uart::read(void)
 {
@@ -159,30 +169,6 @@ void Uart::receiveBuff(char * buffer, uint16_t length)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Initialize the USART/UART
-void Uart::init(void)
-{
-#if defined (serial_led_en) && defined (serial_led_off)
-	serial_led_en();
-	serial_led_off();
-#endif
-
-	UCSR0A = 0;
-	UCSR0B = 0;
-	UCSR0C = 0;
-
-	// set baud values from macro
-	UBRR0H = UBRRH_VALUE;
-	UBRR0L = UBRRL_VALUE;
-
-	// enable uart RX and TX
-	UCSR0B = (1<<RXEN0) | (1<<TXEN0);
-
-	// set 8N1 frame format
-	UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Should be called by the UART RX ISR
 void Uart::receiveHandler(char data)
 {
@@ -197,37 +183,3 @@ void Uart::transmitHandler(void)
 	if (_uart_tx_callback)
 		_uart_tx_callback();
 }
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// receive buffer interrupt vector
-ISR(USART_RX_vect)
-{
-#ifdef serial_led_on
-	serial_led_on();
-#endif
-	uint8_t data = UDR0;
-
-	if (_thisUart)
-		_thisUart->receiveHandler(data);
-#ifdef serial_led_off
-	serial_led_off();
-#endif
-}
-
-/*
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// transmit interrupt vector
-ISR(USART_TX_vect)
-{
-	#ifdef serial_led_on
-	serial_led_on();
-	#endif
-
-	if (_thisUart)
-		_thisUart->transmitHandler();
-
-	#ifdef serial_led_off
-	serial_led_off();
-	#endif
-}
-*/
