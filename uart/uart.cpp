@@ -7,6 +7,8 @@
 #include "uart.h"
 
 
+static Uart * _thisUart = NULL;
+
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Default constructor
@@ -196,7 +198,6 @@ void Uart::transmitHandler(void)
 		_uart_tx_callback();
 }
 
-/*
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // receive buffer interrupt vector
 ISR(USART_RX_vect)
@@ -205,13 +206,15 @@ ISR(USART_RX_vect)
 	serial_led_on();
 #endif
 	uint8_t data = UDR0;
-	if (_uart_rx_callback)
-		_uart_rx_callback(data);
+
+	if (_thisUart)
+		_thisUart->receiveHandler(data);
 #ifdef serial_led_off
 	serial_led_off();
 #endif
 }
 
+/*
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // transmit interrupt vector
 ISR(USART_TX_vect)
