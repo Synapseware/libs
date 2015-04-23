@@ -78,7 +78,7 @@ void incrementAddress(void)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Maps the selected page to the device & address, and writes the device and address
 // bytes to the device, leaving it in a state to accept more data.
-uint8_t __writeActiveAddress(uint16_t page)
+EE_STATUS __writeActiveAddress(uint16_t page)
 {
 	// map device and address to selected page
 	ee_mapdevice(page);
@@ -99,7 +99,7 @@ uint8_t __writeActiveAddress(uint16_t page)
 	{
 		i2cSendStop();
 		return I2C_ERROR_NODEV;
-	}		
+	}
 
 	// address MSB
 	i2cSendByte(_address >> 8);
@@ -114,7 +114,7 @@ uint8_t __writeActiveAddress(uint16_t page)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Set the current address
-uint8_t ee_setpage(uint16_t page)
+EE_STATUS ee_setpage(uint16_t page)
 {
 	// set current address on device
 	__writeActiveAddress(page);
@@ -423,7 +423,7 @@ void ee_readBytesA(uint16_t page, uint16_t length, uint8_t * data, fStatusCallba
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // reads the specified page of data from the eeprom chip
-uint8_t ee_readBytes(uint16_t page, uint16_t length, uint8_t * data)
+EE_STATUS ee_readBytes(uint16_t page, uint16_t length, uint8_t * data)
 {
 	__writeActiveAddress(page);
 
@@ -437,7 +437,7 @@ uint8_t ee_readBytes(uint16_t page, uint16_t length, uint8_t * data)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // writes the specified page of data to the eeprom chip
 // Page write: Start + device + 2 address bytes + 256 bytes of data
-uint8_t ee_writeBytes(uint16_t page, uint8_t * data)
+EE_STATUS ee_writeBytes(uint16_t page, uint8_t * data)
 {
 	// initiate a page write sequence
 	if (__writeActiveAddress(page) != I2C_OK)
@@ -454,7 +454,7 @@ uint8_t ee_writeBytes(uint16_t page, uint8_t * data)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // setup page on eeprom and leave it open
-uint8_t ee_putByteStart(uint16_t page)
+EE_STATUS ee_putByteStart(uint16_t page)
 {
 	return __writeActiveAddress(page);
 }
