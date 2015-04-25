@@ -23,13 +23,11 @@ public:
 	typedef void (*uart_rx_callback_t)(char);
 	typedef void (*uart_tx_callback_t)(void);
 	typedef void (*uart_asyncCallback_t)(void);
-	typedef char (*uart_readCallback_t)(void);
 
 	typedef char (*f_reader_t)(volatile const char**);
 
 
 	Uart(void);
-	void init(void);
 
 	void putstr(const char* pstr);
 	void putstrM(const char* pstr);
@@ -90,6 +88,8 @@ private:
 
 		write(pgm_read_byte(_txAsyncData++));
 	}
+	static inline void null_handler(void)
+	{}
 
 
 	uart_tx_callback_t		_uart_tx_callback;

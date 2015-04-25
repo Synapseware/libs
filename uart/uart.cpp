@@ -7,8 +7,6 @@
 #include "uart.h"
 
 
-static Uart * _thisUart = NULL;
-
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Default constructor
@@ -36,16 +34,6 @@ Uart::Uart(void)
 
 	// set 8N1 frame format
 	UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Initialize the USART/UART
-void Uart::init(void)
-{
-	#if defined (serial_led_en) && defined (serial_led_off)
-	serial_led_en();
-	serial_led_off();
-	#endif
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
