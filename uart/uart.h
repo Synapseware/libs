@@ -13,9 +13,6 @@
 #include <types.h>
 #include "../asyncTypes.h"
 
-// ugh...
-#include "../../core/board.h"
-
 
 class Uart
 {
@@ -30,23 +27,24 @@ public:
 	Uart(void);
 
 	void putstr(const char* pstr);
-	void putstrM(const char* pstr);
+	void putstr_P(const char* pstr);
 	void putstrAM(const char * pstr, uart_asyncCallback_t callBack);
 
 	char * getstr(char * pstr, uint16_t max);
 
-	void beginReceive(uart_rx_callback_t callBack);
-	void endReceive(void);
+	void writeA(uart_tx_callback_t callBack);
+	void writeAEnd(void);
+	void readA(uart_rx_callback_t callBack);
+	void readAEnd(void);
 
-	void beginTransmit(uart_tx_callback_t callBack);
-	void endTransmit(void);
+	uint8_t dataWaiting(void);
+
+	char read(void);
+	void read(char * buffer, uint16_t length);
 
 	void write(char x);
-	uint8_t dataWaiting(void);
-	char read(void);
+	void write(const char * buffer, uint16_t length);
 
-	void sendBuff(const char * buffer, uint16_t length);
-	void receiveBuff(char * buffer, uint16_t length);
 
 	void receiveHandler(char data);
 	void transmitHandler(void);
@@ -60,6 +58,12 @@ private:
 	{
 		return pgm_read_byte((*buff)++);
 	}
+	static void drain_rx(void)
+	{
+		unsigned char data;
+		while (UCSR0A & (1<<RXC0))
+			data = UDR0;
+	}
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	void uart_putstrAMHandler(void)
@@ -67,7 +71,7 @@ private:
 		char data = pgm_read_byte(_txAsyncData++);
 		if (data == 0)
 		{
-			endTransmit();
+			writeAEnd();
 			if (_txAsyncCallback)
 				_txAsyncCallback();
 			_txAsyncCallback = 0;
@@ -84,7 +88,7 @@ private:
 		_txAsyncData		= pstr;
 		_asyncBusy			= 1;
 
-		beginTransmit(callBack);
+		writeA(callBack);
 
 		write(pgm_read_byte(_txAsyncData++));
 	}
@@ -100,8 +104,6 @@ private:
 
 	uart_asyncCallback_t	_txAsyncCallback;
 	uart_asyncCallback_t	_rxAsyncCallback;
-
-	char					_uartReceiveData;
 };
 
 

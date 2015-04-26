@@ -31,13 +31,13 @@ Critical TWI/I2C events are:
 	#define TWI_SCL				PC5
 #endif
 
-#if defined (twi_led_PIN) && defined (twi_led_PORT) && defined (twi_led_DDR)
-	#define enable_twi_led()		twi_led_DDR |= (1<<twi_led_PIN)
-	#define twi_led_on()			twi_led_PORT &= ~(1<<twi_led_PIN)
-	#define twi_led_off()			twi_led_PORT |= (1<<twi_led_PIN)
+#if defined (TWI_LED_PIN) && defined (TWI_LED_PORT) && defined (TWI_LED_DDR)
+	#define twi_led_en()		TWI_LED_DDR |= (1<<TWI_LED_PIN)
+	#define twi_led_on()		TWI_LED_PORT &= ~(1<<TWI_LED_PIN)
+	#define twi_led_off()		TWI_LED_PORT |= (1<<TWI_LED_PIN)
 #else
-	#warning "LED defines are missing.  There will be no diagnostics."
-	#define enable_twi_led()
+	#warning "TWI LED defines are missing.  There will be no diagnostics."
+	#define twi_led_en()
 	#define twi_led_on()
 	#define twi_led_off()
 #endif
