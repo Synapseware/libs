@@ -154,20 +154,18 @@ void Uart::putstr_P(const char * pstr)
 // gets a string of the specified size and stores it in SRAM at pstr
 char * Uart::getstr(char * pstr, uint16_t max)
 {
-	char * str = pstr;
-	uint8_t data;
+	char data;
 	max--;			// make sure we have room for the null character
 	while (max)
 	{
 		data = read();
 		if (data == '\r' || data == '\n' || data == '\0')
 			break;
-		*str = data;
-		str++;
+		*pstr++ = data;
 		max--;
 	}
-	*str='\0';
-	
+	*pstr='\0';
+
 	return pstr;
 }
 
