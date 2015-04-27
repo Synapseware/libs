@@ -10,6 +10,10 @@
 #endif
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //---------------------------------------------------------------------------
 // Setup AT24C1024B info
 #define AT24C1024_ADDRESS		0b10100000
@@ -47,32 +51,37 @@
 #define ASYNC_MULTI_STOP		7
 
 
+typedef	uint8_t EE_STATUS;
+
+
 //---------------------------------------------------------------------------
 
 
 void ee_mapdevice(uint16_t page);
 
-uint8_t ee_setpage(uint16_t page);
+EE_STATUS ee_setpage(uint16_t page);
 void ee_setpageA(uint16_t page, fStatusCallback callBack);
 
 uint8_t ee_read(void);
 void ee_readEnd(void);
 void ee_readA(fStatusCallback callBack);
 
-uint8_t ee_readBytes(uint16_t page, uint16_t length, uint8_t * data);
+EE_STATUS ee_readBytes(uint16_t page, uint16_t length, uint8_t * data);
 void ee_readBytesA(uint16_t page, uint16_t length, uint8_t * data, fStatusCallback callBack);
 
-uint8_t ee_writeBytes(uint16_t page, uint8_t * data);
+EE_STATUS ee_writeBytes(uint16_t page, uint8_t * data);
 
-uint8_t ee_putByteStart(uint16_t page);
+EE_STATUS ee_putByteStart(uint16_t page);
 void ee_putByte(uint8_t data);
 void ee_poll(void);
 void ee_putBytesEnd(void);
 
-uint8_t eeFormatPage(uint16_t page);
-
 void ee_init(unsigned short bitrateKHz);
 
 
+
+#ifdef  __cplusplus
+}
+#endif
 
 #endif

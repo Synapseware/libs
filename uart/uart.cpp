@@ -6,8 +6,6 @@
 
 #include "uart.h"
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-typedef char (*f_reader_t)(volatile const char**);
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -23,30 +21,63 @@ Uart::Uart(void)
 	_txAsyncCallback	= 0;
 	_rxAsyncCallback	= 0;
 
-	_rxAsyncData		= 0;
-	_rxAsyncLen			= 0;
-	_uartReceiveData	= 0;
+	// set baud values from macro
+	//UBRR0H =	UBRRH_VALUE;
+	//UBRR0L =	UBRRL_VALUE;
+	UBRR0L =	(UBRRN & 0xFF);		// Don't use BAUD macro...
+	UBRR0H =	(UBRRN >> 8);
+
+	UCSR0A =	(0<<U2X0) |			// no clock rate doubling
+				(0<<MPCM0);			// no multi-processor communication mode
+
+	// enable uart RX and TX
+	UCSR0B =	(0<<RXCIE0) |		// no receive interrupts
+				(0<<TXCIE0) |		// no transmit interrupts
+				(0<<UDRIE0) |		// no data register empty interrupts
+				(1<<RXEN0) |		// enable RX
+				(1<<TXEN0) |		// enable TX
+				(0<<UCSZ02) |		// 8 data bits
+				(0<<RXB80) |		// 9th bit
+				(0<<TXB80);			// 9th bit
+
+	// set 8N1 frame format
+	UCSR0C =	(0<<UMSEL01) |		// async UART
+				(0<<UMSEL00) |
+				(0<<UPM01) |		// disable parity
+				(0<<UPM00) |
+				(0<<USBS0) |		// 1 stop bit
+				(1<<UCSZ01) |		// 8 data bits
+				(1<<UCSZ00) |
+				(0<<UCPOL0);		// data shapping for async mode should be 0
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Starts asynchronous receive mode
-void Uart::beginReceive(uart_rx_callback_t callBack)
+void Uart::readA(uart_rx_callback_t callBack)
 {
+	// disable interrupts
+	UCSR0B &= ~(1<<RXCIE0);
+
+	// drain the receive buffer
+	drain_rx();
+
+	// setup the callback and enable interrupt
 	_uart_rx_callback = callBack;
 	UCSR0B |= (1<<RXCIE0);
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // ends asynchronous receive mode
-void Uart::endReceive()
+void Uart::readAEnd(void)
 {
 	UCSR0B &= ~(1<<RXCIE0);
 	_uart_rx_callback = 0;
+	drain_rx();
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Starts asynchronous transmit mode
-void Uart::beginTransmit(uart_tx_callback_t callBack)
+void Uart::writeA(uart_tx_callback_t callBack)
 {
 	_uart_tx_callback = callBack;
 	UCSR0B |= (1<<TXCIE0);
@@ -54,59 +85,10 @@ void Uart::beginTransmit(uart_tx_callback_t callBack)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // ends asynchronous transmit mode
-void Uart::endTransmit()
+void Uart::writeAEnd(void)
 {
 	UCSR0B &= ~(1<<TXCIE0);
 	_uart_tx_callback = 0;
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// writes a string from SRAM
-void Uart::putstr(const char * pstr)
-{
-	char data;
-	while (0 != (data = *pstr++))
-		write(data);
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// gets a string of the specified size and stores it in SRAM at pstr
-char * Uart::getstr(char * pstr, uint16_t max)
-{
-	char * str = pstr;
-	uint8_t data;
-	max--;			// make sure we have room for the null character
-	while (max)
-	{
-		data = read();
-		if (data == '\r' || data == '\n' || data == '\0')
-			break;
-		*str = data;
-		str++;
-		max--;
-	}
-	*str='\0';
-	
-	return pstr;
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// writes a character of data to the UART
-void Uart::write(char data)
-{
-	// wait for empty receive buffer
-	while (0 == (UCSR0A & (1<<UDRE0)));
-
-	// send
-	UDR0 = data;
-}
-
-void Uart::asyncRead(uint8_t data)
-{
-	// terminate async receive	
-	endReceive();
-
-	_uartReceiveData = data;	
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -120,14 +102,28 @@ char Uart::read(void)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-uint8_t Uart::dataWaiting()
+void Uart::read(char * buffer, uint16_t length)
 {
-	// returns 0 if no data waiting
-	return (UCSR0A & (1<<RXC0));
+	while (length)
+	{
+		*buffer++ = read();
+		length--;
+	}
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-void Uart::sendBuff(const char * buffer, uint16_t length)
+// writes a character of data to the UART
+void Uart::write(char data)
+{
+	// wait for empty receive buffer
+	while (0 == (UCSR0A & (1<<UDRE0)));
+
+	// send
+	UDR0 = data;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+void Uart::write(const char * buffer, uint16_t length)
 {
 	while (length)
 	{
@@ -137,38 +133,47 @@ void Uart::sendBuff(const char * buffer, uint16_t length)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-void Uart::receiveBuff(char * buffer, uint16_t length)
+// writes a string from SRAM
+void Uart::putstr(const char * pstr)
 {
-	endReceive();
-	while (length)
-	{
-		*buffer++ = read();
-		length--;
-	}
+	char data;
+	while (0 != (data = *pstr++))
+		write(data);
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Initialize the USART/UART
-void Uart::init()
+// writes a string from program memory
+void Uart::putstr_P(const char * pstr)
 {
-#if defined (serial_led_en) && defined (serial_led_off)
-	serial_led_en();
-	serial_led_off();
-#endif
+	char data;
+	while (0 != (data = pgm_read_byte(pstr++)))
+		write(data);
+}
 
-	UCSR0A = 0;
-	UCSR0B = 0;
-	UCSR0C = 0;
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// gets a string of the specified size and stores it in SRAM at pstr
+char * Uart::getstr(char * pstr, uint16_t max)
+{
+	char data;
+	max--;			// make sure we have room for the null character
+	while (max)
+	{
+		data = read();
+		if (data == '\r' || data == '\n' || data == '\0')
+			break;
+		*pstr++ = data;
+		max--;
+	}
+	*pstr='\0';
 
-	// set baud values from macro
-	UBRR0H = UBRRH_VALUE;
-	UBRR0L = UBRRL_VALUE;
+	return pstr;
+}
 
-	// enable uart RX and TX
-	UCSR0B = (1<<RXEN0) | (1<<TXEN0);
-
-	// set 8N1 frame format
-	UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+uint8_t Uart::dataWaiting(void)
+{
+	// returns 0 if no data waiting
+	return (UCSR0A & (1<<RXC0));
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -181,40 +186,8 @@ void Uart::receiveHandler(char data)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Should be called by the UART TX ISR
-char Uart::transmitHandler(void)
+void Uart::transmitHandler(void)
 {
 	if (_uart_tx_callback)
 		_uart_tx_callback();
-
-	return 0;
 }
-/*
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// receive buffer interrupt vector
-ISR(USART_RX_vect)
-{
-#ifdef serial_led_on
-	serial_led_on();
-#endif
-	uint8_t data = UDR0;
-	if (_uart_rx_callback)
-		_uart_rx_callback(data);
-#ifdef serial_led_off
-	serial_led_off();
-#endif
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// transmit interrupt vector
-ISR(USART_TX_vect)
-{
-#ifdef serial_led_on
-	serial_led_on();
-#endif
-	if (_uart_tx_callback)
-		_uart_tx_callback();
-#ifdef serial_led_off
-	serial_led_off();
-#endif
-}
-*/

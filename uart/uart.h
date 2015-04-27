@@ -14,40 +14,40 @@
 #include "../asyncTypes.h"
 
 
-
-typedef void (*uart_rx_callback_t)(char);
-typedef void (*uart_tx_callback_t)(void);
-typedef void (*uart_asyncCallback_t)(void);
-typedef char (*uart_readCallback_t)(void);
-
 class Uart
 {
 public:
+	typedef void (*uart_rx_callback_t)(char);
+	typedef void (*uart_tx_callback_t)(void);
+	typedef void (*uart_asyncCallback_t)(void);
+
+	typedef char (*f_reader_t)(volatile const char**);
+
+
 	Uart(void);
+
 	void putstr(const char* pstr);
-	void putstrM(const char* pstr);
+	void putstr_P(const char* pstr);
 	void putstrAM(const char * pstr, uart_asyncCallback_t callBack);
 
 	char * getstr(char * pstr, uint16_t max);
 
-	void beginReceive(uart_rx_callback_t callBack);
-	void endReceive(void);
+	void writeA(uart_tx_callback_t callBack);
+	void writeAEnd(void);
+	void readA(uart_rx_callback_t callBack);
+	void readAEnd(void);
 
-	void beginTransmit(uart_tx_callback_t callBack);
-	void endTransmit(void);
+	uint8_t dataWaiting(void);
+
+	char read(void);
+	void read(char * buffer, uint16_t length);
 
 	void write(char x);
-	uint8_t dataWaiting(void);
-	char read(void);
-	void asyncRead(uint8_t data);
+	void write(const char * buffer, uint16_t length);
 
-	void sendBuff(const char * buffer, uint16_t length);
-	void receiveBuff(char * buffer, uint16_t length);
 
 	void receiveHandler(char data);
-	char transmitHandler(void);
-
-	void init(void);
+	void transmitHandler(void);
 
 private:
 	inline char sram_read(const char** buff)
@@ -58,21 +58,20 @@ private:
 	{
 		return pgm_read_byte((*buff)++);
 	}
+	static void drain_rx(void)
+	{
+		unsigned char data;
+		while (UCSR0A & (1<<RXC0))
+			data = UDR0;
+	}
 
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	// writes a string from program memory
-	void uart_putstrM(const char * pstr)
-	{
-		char data;
-		while (0 != (data = pgm_read_byte(pstr++)))
-			write(data);
-	}
 	void uart_putstrAMHandler(void)
 	{
 		char data = pgm_read_byte(_txAsyncData++);
 		if (data == 0)
 		{
-			endTransmit();
+			writeAEnd();
 			if (_txAsyncCallback)
 				_txAsyncCallback();
 			_txAsyncCallback = 0;
@@ -89,11 +88,12 @@ private:
 		_txAsyncData		= pstr;
 		_asyncBusy			= 1;
 
-		beginTransmit(callBack);
+		writeA(callBack);
 
 		write(pgm_read_byte(_txAsyncData++));
 	}
-
+	static inline void null_handler(void)
+	{}
 
 
 	uart_tx_callback_t		_uart_tx_callback;
@@ -104,10 +104,6 @@ private:
 
 	uart_asyncCallback_t	_txAsyncCallback;
 	uart_asyncCallback_t	_rxAsyncCallback;
-
-	char*					_rxAsyncData;
-	uint16_t				_rxAsyncLen;
-	char					_uartReceiveData;
 };
 
 

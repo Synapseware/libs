@@ -78,7 +78,7 @@ void incrementAddress(void)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Maps the selected page to the device & address, and writes the device and address
 // bytes to the device, leaving it in a state to accept more data.
-uint8_t __writeActiveAddress(uint16_t page)
+EE_STATUS __writeActiveAddress(uint16_t page)
 {
 	// map device and address to selected page
 	ee_mapdevice(page);
@@ -99,7 +99,7 @@ uint8_t __writeActiveAddress(uint16_t page)
 	{
 		i2cSendStop();
 		return I2C_ERROR_NODEV;
-	}		
+	}
 
 	// address MSB
 	i2cSendByte(_address >> 8);
@@ -114,7 +114,7 @@ uint8_t __writeActiveAddress(uint16_t page)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Set the current address
-uint8_t ee_setpage(uint16_t page)
+EE_STATUS ee_setpage(uint16_t page)
 {
 	// set current address on device
 	__writeActiveAddress(page);
@@ -140,57 +140,57 @@ void ee_setPageAHandler(void)
 		// send start signal
 		case ASYNC_SEND_START:
 			_asyncStep = ASYNC_SEND_DEVICE;
-			i2cSendStartAsync(ee_setPageAHandler);
-			break;
+			i2cSendStartAsync(&ee_setPageAHandler);
+			return;
 
 		// send device address with write
 		case ASYNC_SEND_DEVICE:
 			if (i2cGetStatus() != TW_START)
 			{
 				_asyncError();
-				break;
+				return;
 			}
 
 			_asyncStep = ASYNC_SEND_ADDRMSB;
-			i2cSendByteAsync(_device & I2C_WRITE, ee_setPageAHandler);
-			break;
+			i2cSendByteAsync(_device & I2C_WRITE, &ee_setPageAHandler);
+			return;
 
 		// send address MSB
 		case ASYNC_SEND_ADDRMSB:
 			if (i2cGetStatus() != TW_MT_SLA_ACK)
 			{
 				_asyncError();
-				break;
+				return;
 			}
 
 			_asyncStep = ASYNC_SEND_ADDRLSB;
-			i2cSendByteAsync(_address >> 8, ee_setPageAHandler);
-			break;
+			i2cSendByteAsync(_address >> 8, &ee_setPageAHandler);
+			return;
 
 		// send address LSB
 		case ASYNC_SEND_ADDRLSB:
 			if (i2cGetStatus() != TW_MT_DATA_ACK)
 			{
 				_asyncError();
-				break;
+				return;
 			}
 
 			_asyncStep = ASYNC_SEND_STOP;
-			i2cSendByteAsync(_address & 0xff, ee_setPageAHandler);
-			break;
+			i2cSendByteAsync(_address & 0xff, &ee_setPageAHandler);
+			return;
 
 		// end the transaction
 		case ASYNC_SEND_STOP:
 			if (i2cGetStatus() != TW_MT_DATA_ACK)
 			{
 				_asyncError();
-				break;
+				return;
 			}
 
 			i2cSendStop();
 
 			_eeComplete(0);
-			break;
+			return;
 	}
 }
 void ee_setpageA(uint16_t page, fStatusCallback callBack)
@@ -418,13 +418,12 @@ void ee_readBytesA(uint16_t page, uint16_t length, uint8_t * data, fStatusCallba
 	_asyncStep		= ASYNC_MULTI_START;
 
 
-	_onComplete = callBack;
 	ee_readBytesHandler();
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // reads the specified page of data from the eeprom chip
-uint8_t ee_readBytes(uint16_t page, uint16_t length, uint8_t * data)
+EE_STATUS ee_readBytes(uint16_t page, uint16_t length, uint8_t * data)
 {
 	__writeActiveAddress(page);
 
@@ -438,7 +437,7 @@ uint8_t ee_readBytes(uint16_t page, uint16_t length, uint8_t * data)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // writes the specified page of data to the eeprom chip
 // Page write: Start + device + 2 address bytes + 256 bytes of data
-uint8_t ee_writeBytes(uint16_t page, uint8_t * data)
+EE_STATUS ee_writeBytes(uint16_t page, uint8_t * data)
 {
 	// initiate a page write sequence
 	if (__writeActiveAddress(page) != I2C_OK)
@@ -455,7 +454,7 @@ uint8_t ee_writeBytes(uint16_t page, uint8_t * data)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // setup page on eeprom and leave it open
-uint8_t ee_putByteStart(uint16_t page)
+EE_STATUS ee_putByteStart(uint16_t page)
 {
 	return __writeActiveAddress(page);
 }
@@ -479,14 +478,15 @@ void ee_putBytesEnd(void)
 	//i2cWaitForComplete();
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 void ee_poll(void)
 {
 	/*
-ACKNOWLEDGE POLLING: Once the internally timed write cycle has started and the
-EEPROM inputs are disabled, acknowledge polling can be initiated. This involves sending a
-start condition followed by the device address word. The read/write bit is representative of the
-operation desired. Only if the internal write cycle has completed will the EEPROM respond with
-a zero, allowing the read or write sequence to continue.
+	ACKNOWLEDGE POLLING: Once the internally timed write cycle has started and the
+	EEPROM inputs are disabled, acknowledge polling can be initiated. This involves sending a
+	start condition followed by the device address word. The read/write bit is representative of the
+	operation desired. Only if the internal write cycle has completed will the EEPROM respond with
+	a zero, allowing the read or write sequence to continue.
 	*/
 
 	while(1)

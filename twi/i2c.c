@@ -221,7 +221,7 @@ void i2cInit(unsigned short bitrateKHz)
 	// set pins as output
 	DDRC |= (1<<TWI_SDA) | (1<<TWI_SCL);
 
-	enable_twi_led();
+	twi_led_en();
 	twi_led_off();
 
 	TWCR = 0;
