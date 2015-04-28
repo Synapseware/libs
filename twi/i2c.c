@@ -41,10 +41,10 @@ inline void i2cSendStopAsync(fVoidCallback cb)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 inline void i2cWaitForComplete(void)
 {
-#ifdef release
+	#ifdef release
 	// wait for i2c interface to complete operation
     while (!(TWCR & (1<<TWINT)));
-#endif
+	#endif
 
 	twi_led_off();
 }
@@ -52,9 +52,9 @@ inline void i2cWaitForComplete(void)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 inline void i2cWaitForStop(void)
 {
-#ifdef release
+	#ifdef release
 	while (!(inb(TWCR) & BV(TWSTO)));
-#endif
+	#endif
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
