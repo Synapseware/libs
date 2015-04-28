@@ -22,10 +22,10 @@ Uart::Uart(void)
 	_rxAsyncCallback	= 0;
 
 	// set baud values from macro
-	//UBRR0H =	UBRRH_VALUE;
-	//UBRR0L =	UBRRL_VALUE;
-	UBRR0L =	(UBRRN & 0xFF);		// Don't use BAUD macro...
-	UBRR0H =	(UBRRN >> 8);
+	UBRR0H =	UBRRH_VALUE;
+	UBRR0L =	UBRRL_VALUE;
+	//UBRR0L =	(UBRRN & 0xFF);		// Don't use BAUD macro...
+	//UBRR0H =	(UBRRN >> 8);
 
 	UCSR0A =	(0<<U2X0) |			// no clock rate doubling
 				(0<<MPCM0);			// no multi-processor communication mode
