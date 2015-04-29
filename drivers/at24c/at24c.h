@@ -1,6 +1,9 @@
 #ifndef __AT24C_H__
 #define __AT24C_H__
 
+#include <inttypes.h>
+#include <stdbool.h>
+
 #include "../../twi/i2c.h"
 
 
@@ -76,6 +79,7 @@ EE_STATUS ee_writeBytes(uint16_t address, void * data, uint8_t length);
 EE_STATUS ee_putByteStart(uint16_t page);
 void ee_putByte(uint8_t data);
 void ee_poll(void);
+bool ee_busy(void);
 void ee_putBytesEnd(void);
 
 void ee_init(unsigned short bitrateKHz);
