@@ -10,11 +10,6 @@
 #include "../asyncTypes.h"
 
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 /*
 Critical TWI/I2C events are:
 	Start/Repeated Start
@@ -30,6 +25,8 @@ Critical TWI/I2C events are:
 #if defined (__AVR_ATmega328P__) || defined (__AVR_ATmega328__) || defined (__AVR_ATmega168__) || defined (__AVR_ATmega88__) || defined (__AVR_ATmega48__)
 	#define TWI_SDA				PC4
 	#define TWI_SCL				PC5
+#else
+	#warning "Unsupported MCU!  I2C can't be configured.  Results unpredicatable."
 #endif
 
 #if defined (TWI_LED_PIN) && defined (TWI_LED_PORT) && defined (TWI_LED_DDR)
@@ -41,6 +38,19 @@ Critical TWI/I2C events are:
 	#define twi_led_en()
 	#define twi_led_on()
 	#define twi_led_off()
+#endif
+
+
+#define TWI_PRESCALE			(0<<TWPS1) | (0<<TWPS0)
+#define TWI_ACK					TWI_PRESCALE | (1<<TWINT) | (1<<TWEN) | (1<<TWEA)
+#define TWI_NACK				TWI_PRESCALE | (1<<TWINT) | (1<<TWEN)
+#define TWI_SEND				TWI_PRESCALE | (1<<TWINT) | (1<<TWEN)
+#define TWI_START				TWI_PRESCALE | (1<<TWINT) | (1<<TWEN) | (1<<TWSTA)
+#define TWI_STOP				TWI_PRESCALE | (1<<TWINT) | (1<<TWEN) | (1<<TWSTO)
+#define TWI_ENDINT				TWI_PRESCALE | (1<<TWINT)
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 
@@ -56,14 +66,6 @@ static const uint8_t I2C_ERROR				= 0x02;
 // WRITE/READ masks and flags
 static const uint8_t I2C_WRITE				= 0xFE;
 static const uint8_t I2C_READ				= 0x01;
-
-#define TWI_PRESCALE			(0<<TWPS1) | (0<<TWPS0)
-#define TWI_ACK					TWI_PRESCALE | (1<<TWINT) | (1<<TWEN) | (1<<TWEA)
-#define TWI_NACK				TWI_PRESCALE | (1<<TWINT) | (1<<TWEN)
-#define TWI_SEND				TWI_PRESCALE | (1<<TWINT) | (1<<TWEN)
-#define TWI_START				TWI_PRESCALE | (1<<TWINT) | (1<<TWEN) | (1<<TWSTA)
-#define TWI_STOP				TWI_PRESCALE | (1<<TWINT) | (1<<TWEN) | (1<<TWSTO)
-#define TWI_ENDINT				TWI_PRESCALE | (1<<TWINT)
 
 
 //! Initialize I2C (TWI) interface

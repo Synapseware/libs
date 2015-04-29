@@ -18,6 +18,7 @@ extern "C" {
 
 //---------------------------------------------------------------------------
 // Setup AT24C1024B info
+// 0b10100000 = 160 or 0xA0
 #define AT24C1024_ADDRESS		0b10100000
 #define AT24C1024_DEVICE_PAGES	512
 #define AT24C1024_DEVICE_SIZE	131072
@@ -71,7 +72,8 @@ void ee_readA(fStatusCallback callBack);
 EE_STATUS ee_readBytes(uint16_t page, uint16_t length, uint8_t * data);
 void ee_readBytesA(uint16_t page, uint16_t length, uint8_t * data, fStatusCallback callBack);
 
-EE_STATUS ee_writeBytes(uint16_t page, uint8_t * data);
+EE_STATUS ee_writePage(uint16_t page, void * data);
+EE_STATUS ee_writeBytes(uint16_t address, void * data, uint8_t length);
 
 EE_STATUS ee_putByteStart(uint16_t page);
 void ee_putByte(uint8_t data);

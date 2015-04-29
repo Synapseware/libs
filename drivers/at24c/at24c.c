@@ -1,17 +1,17 @@
 #include "at24c.h"
 
-static uint16_t		_page;
-static uint16_t		_address;
-static uint8_t		_device;
+static	uint16_t		_page;
+static	uint16_t		_address;
+static	uint8_t			_device;
 
-volatile uint8_t	_data;
-volatile uint8_t *	_pbuffer;
-volatile uint16_t	_bufferLen;
+static	uint8_t			_data;
+static	uint8_t *		_pbuffer;
+static	uint16_t		_bufferLen;
 
-volatile uint8_t	_asyncStep;
-volatile uint8_t	_busy;
+static	uint8_t			_asyncStep;
+static	uint8_t			_busy;
 
-volatile fStatusCallback _onComplete;
+static	fStatusCallback _onComplete;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -425,11 +425,14 @@ void ee_readBytesA(uint16_t page, uint16_t length, uint8_t * data, fStatusCallba
 // reads the specified page of data from the eeprom chip
 EE_STATUS ee_readBytes(uint16_t page, uint16_t length, uint8_t * data)
 {
-	__writeActiveAddress(page);
+	EE_STATUS status = __writeActiveAddress(page);
+	if (I2C_OK != status)
+		return status;
 
 	// perform block read
-	if (i2cMasterReceiveNI(AT24C1024_ADDRESS, length, data) != I2C_OK)
-		return I2C_ERROR;
+	status = i2cMasterReceiveNI(AT24C1024_ADDRESS, length, data);
+	if (I2C_OK != status)
+		return status;
 
 	return I2C_OK;
 }
@@ -437,14 +440,31 @@ EE_STATUS ee_readBytes(uint16_t page, uint16_t length, uint8_t * data)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // writes the specified page of data to the eeprom chip
 // Page write: Start + device + 2 address bytes + 256 bytes of data
-EE_STATUS ee_writeBytes(uint16_t page, uint8_t * data)
+EE_STATUS ee_writePage(uint16_t page, void * data)
 {
 	// initiate a page write sequence
 	if (__writeActiveAddress(page) != I2C_OK)
 		return I2C_ERROR;
 
 	// perform block write
-	i2cMasterRawWrite(AT24C1024_PAGE_SIZE, data);
+	i2cMasterRawWrite(AT24C1024_PAGE_SIZE, (uint8_t*)data);
+
+	// terminate the page write
+	ee_putBytesEnd();
+
+	return I2C_OK;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Writes an arbitrary block of data to the EEPROM.
+EE_STATUS ee_writeBytes(uint16_t address, void * data, uint8_t length)
+{
+	// initiate a page write sequence
+	if (__writeActiveAddress(address) != I2C_OK)
+		return I2C_ERROR;
+
+	// perform block write
+	i2cMasterRawWrite((uint16_t) length, (uint8_t*)data);
 
 	// terminate the page write
 	ee_putBytesEnd();
@@ -456,6 +476,7 @@ EE_STATUS ee_writeBytes(uint16_t page, uint8_t * data)
 // setup page on eeprom and leave it open
 EE_STATUS ee_putByteStart(uint16_t page)
 {
+
 	return __writeActiveAddress(page);
 }
 
