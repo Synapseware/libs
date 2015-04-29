@@ -1,10 +1,11 @@
-#ifndef I2C_H
-#define IC2_H
+#ifndef __I2C_H__
+#define __I2C_H__
 
 #include <types.h>
 #include <util/twi.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <inttypes.h>
 
 #include "../asyncTypes.h"
 

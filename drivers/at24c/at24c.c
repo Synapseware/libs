@@ -507,6 +507,25 @@ void ee_poll(void)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Performs an I2C acknoledge for the EEPROM.  If the device is busy, it will NACK
+bool ee_busy(void)
+{
+	i2cSendStart();
+	i2cWaitForComplete();
+
+	i2cSendByte(_device & I2C_WRITE);
+	i2cWaitForComplete();
+
+	if (i2cGetStatus() == TW_MT_SLA_ACK)
+	{
+		i2cSendStop();
+		return false;
+	}
+
+	return true;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 void ee_init(unsigned short bitrateKHz)
 {
 	_data			= 0;
