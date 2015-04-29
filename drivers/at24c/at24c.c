@@ -1,17 +1,17 @@
 #include "at24c.h"
 
-static uint16_t			_page;
-static uint16_t			_address;
-static uint8_t			_device;
+static	uint16_t		_page;
+static	uint16_t		_address;
+static	uint8_t			_device;
 
-volatile uint8_t		_data;
-volatile uint8_t *		_pbuffer;
-volatile uint16_t		_bufferLen;
+static	uint8_t			_data;
+static	uint8_t *		_pbuffer;
+static	uint16_t		_bufferLen;
 
-volatile uint8_t		_asyncStep;
-volatile uint8_t		_busy;
+static	uint8_t			_asyncStep;
+static	uint8_t			_busy;
 
-volatile fStatusCallback _onComplete;
+static	fStatusCallback _onComplete;
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -476,6 +476,7 @@ EE_STATUS ee_writeBytes(uint16_t address, void * data, uint8_t length)
 // setup page on eeprom and leave it open
 EE_STATUS ee_putByteStart(uint16_t page)
 {
+
 	return __writeActiveAddress(page);
 }
 
