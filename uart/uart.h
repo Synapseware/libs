@@ -49,6 +49,9 @@ public:
 	void receiveHandler(char data);
 	void transmitHandler(void);
 
+
+	int read(int timeout);
+
 private:
 	inline char sram_read(const char** buff)
 	{
@@ -105,6 +108,7 @@ private:
 	uart_asyncCallback_t	_txAsyncCallback;
 	uart_asyncCallback_t	_rxAsyncCallback;
 };
+
 
 
 #endif

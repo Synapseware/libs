@@ -112,6 +112,13 @@ void Uart::read(char * buffer, uint16_t length)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+int Uart::read(int timeout)
+{
+	// TODO: Make the timeout work... haha
+	return 0;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // writes a character of data to the UART
 void Uart::write(char data)
 {
