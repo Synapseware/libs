@@ -3,15 +3,19 @@
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <avr/io.h>
+#include <inttypes.h>
 #include <util/setbaud.h>
 #include <avr/pgmspace.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
 
-#include <inttypes.h>
-#include <stdio.h>
 #include <types.h>
 #include "../asyncTypes.h"
+#include "../core/ringbuffer.h"
 
 
 class Uart
@@ -24,7 +28,7 @@ public:
 	typedef char (*f_reader_t)(volatile const char**);
 
 
-	Uart(void);
+	Uart(RingBuffer* rx_buff);
 
 	void putstr(const char* pstr);
 	void putstr_P(const char* pstr);
@@ -95,6 +99,8 @@ private:
 	static inline void null_handler(void)
 	{}
 
+
+	RingBuffer *			_uart_rx_buff;
 
 	uart_tx_callback_t		_uart_tx_callback;
 	uart_rx_callback_t		_uart_rx_callback;

@@ -1,17 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <avr/io.h>
-#include <inttypes.h>
-
 #include "uart.h"
 
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Default constructor
-Uart::Uart(void)
+Uart::Uart(RingBuffer* rx_buff)
 {
+	_uart_rx_buff		= rx_buff;
+
 	_uart_tx_callback	= 0;
 	_uart_rx_callback	= 0;
 	_txAsyncData		= 0;
