@@ -3,15 +3,20 @@
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <inttypes.h>
+#include <types.h>
+
+#include <avr/io.h>
 #include <util/setbaud.h>
 #include <avr/pgmspace.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
 
-#include <inttypes.h>
-#include <stdio.h>
-#include <types.h>
 #include "../asyncTypes.h"
+#include "../core/ringbuffer.h"
 
 
 class Uart
@@ -23,8 +28,8 @@ public:
 
 	typedef char (*f_reader_t)(volatile const char**);
 
-
-	Uart(void);
+	//Uart(void);
+	Uart(RingBuffer* rx_buff);
 
 	void putstr(const char* pstr);
 	void putstr_P(const char* pstr);
@@ -37,14 +42,20 @@ public:
 	void readA(uart_rx_callback_t callBack);
 	void readAEnd(void);
 
-	uint8_t dataWaiting(void);
+	// returns true if data is waiting in the receivers register
+	bool dataWaiting(void);
 
-	char read(void);
+	// reads a byte of data from the buffer or returns -1 if not data available
+	int read(void);
+
+	// blocks until the number of bytes read is received
 	void read(char * buffer, uint16_t length);
 
 	void write(char x);
 	void write(const char * buffer, uint16_t length);
 
+	// blocks the caller until data is available
+	void wait(void);
 
 	void receiveHandler(char data);
 	void transmitHandler(void);
@@ -95,6 +106,9 @@ private:
 	static inline void null_handler(void)
 	{}
 
+
+
+	RingBuffer *			_uart_rx_buff;
 
 	uart_tx_callback_t		_uart_tx_callback;
 	uart_rx_callback_t		_uart_rx_callback;
