@@ -1,17 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <avr/io.h>
-#include <inttypes.h>
-
 #include "uart.h"
 
 
 
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Default constructor
-Uart::Uart(void)
+// Constructor
+Uart::Uart(RingBuffer* rx_buff = NULL)
 {
+	_uart_rx_buff		= rx_buff;
+
 	_uart_tx_callback	= 0;
 	_uart_rx_callback	= 0;
 	_txAsyncData		= 0;
@@ -31,7 +28,7 @@ Uart::Uart(void)
 				(0<<MPCM0);			// no multi-processor communication mode
 
 	// enable uart RX and TX
-	UCSR0B =	(0<<RXCIE0) |		// no receive interrupts
+	UCSR0B =	(1<<RXCIE0) |		// enable receive interrupts
 				(0<<TXCIE0) |		// no transmit interrupts
 				(0<<UDRIE0) |		// no data register empty interrupts
 				(1<<RXEN0) |		// enable RX
@@ -93,12 +90,19 @@ void Uart::writeAEnd(void)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Reads a byte of data from the UART.
-char Uart::read(void)
+int Uart::read(void)
 {
-	// wait for data
-	while (0 == (UCSR0A & (1<<RXC0)));
+	if (NULL == _uart_rx_buff)
+	{
+		// wait for data
+		return dataWaiting()
+			? UDR0
+			: -1;
+	}
 
-	return UDR0;
+	// read data from RX buffer
+	char data = _uart_rx_buff->Get();
+	return (int) data;
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -106,9 +110,26 @@ void Uart::read(char * buffer, uint16_t length)
 {
 	while (length)
 	{
-		*buffer++ = read();
+		int data = read();
+		if (-1 == data)
+			continue;
+
+		*buffer++ = (char) data;
 		length--;
 	}
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// blocks until data is available
+void Uart::wait(void)
+{
+	if (NULL != _uart_rx_buff)
+	{
+		while (_uart_rx_buff->IsEmpty());
+		return;
+	}
+
+	while (0 == (UCSR0A & (1<<RXC0)));
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -170,7 +191,7 @@ char * Uart::getstr(char * pstr, uint16_t max)
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-uint8_t Uart::dataWaiting(void)
+bool Uart::dataWaiting(void)
 {
 	// returns 0 if no data waiting
 	return (UCSR0A & (1<<RXC0));
@@ -180,6 +201,8 @@ uint8_t Uart::dataWaiting(void)
 // Should be called by the UART RX ISR
 void Uart::receiveHandler(char data)
 {
+	_uart_rx_buff->Put(data);
+
 	if (_uart_rx_callback)
 		_uart_rx_callback(data);
 }
