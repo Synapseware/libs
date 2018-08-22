@@ -1,0 +1,3496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:saxon="http://saxon.sf.net//"
+         schemaVersion="1.3"
+         xs:schemaLocation="http://www.atmel.com/schemas/pack-device-atmel-extension PACK.DEVICE.ATMEL.EXTENSION.xsd"
+         xs:noNamespaceSchemaLocation="PACK.ATMEL.xsd">
+   <vendor>Atmel</vendor>
+   <url>http://packs.download.atmel.com/</url>
+   <name>XMEGAA_DFP</name>
+   <description>Atmel XMEGAA Series Device Support</description>
+   <releases>
+      <release version="1.1.68" date="2017-02-16">Generate enums for status/configuration registers according to AVR-1000.</release>
+      <release version="1.0.51">Update ATDF files required for ASF4/Start. Update Timer/Counter info. Rename ASPACE to ASIZE. Clean up EBI module. Add AES trigger. Update CURRCTRL and CURRCALIB registers for U devices.</release>
+      <release version="1.0.39">Fix issues with legacy headers for non-U devices. Add external SRAM to list of address spaces.</release>
+      <release version="1.0.38">Update documentation links.</release>
+      <release version="1.0.36">Initial release.</release>
+   </releases>
+   <keywords>
+      <keyword>Atmel</keyword>
+      <keyword>Device Support</keyword>
+      <keyword>Device Family Package Atmel</keyword>
+      <keyword>XMEGAA</keyword>
+   </keywords>
+   <devices>
+      <family Dfamily="XMEGAA" Dvendor="Atmel:3">
+         <device Dname="ATxmega128A1U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox128a1u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega128A1U.atdf"/>
+                  <at:variant ordercode="ATxmega128A1U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega128A1U-CU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega128A1U-C7U"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega128A1U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x20000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x1E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x20000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x001000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x000800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x002000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x4000"
+                             size="0x00BFFF"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="EXTERNAL_SRAM"
+                             external="true"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega128A1u"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega128a1u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega128a1u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega128a1u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A1 Microcontroller, 128KB Flash, 100-pin</description>
+            <book name="http://www.atmel.com/images/Atmel-8067-8-and-16-bit-AVR-Microcontrollers-ATxmega64A1-ATxmega128A1_Datasheet.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA128A1.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega64A3">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox64a3.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega64A3.atdf"/>
+                  <at:variant ordercode="ATXMEGA64A3-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA64A3-MU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x0000"
+                             size="0x10000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0F000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x10000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x1000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x0000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega64A3"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega64a3"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 64KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA64A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega256A3">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox256a3.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega256A3.atdf"/>
+                  <at:variant ordercode="ATXMEGA256A3-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA256A3-MU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x00000"
+                             size="0x40000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x3E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x40000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x00000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x01000"
+                             size="0x1000"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x02000"
+                             size="0x4000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x1000"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega256A3"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega256a3"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 256KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA256A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega256A3BU">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox256a3bu.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega256A3BU.atdf"/>
+                  <at:variant ordercode="ATxmega256A3BU-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega256A3BU-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:memory start="0x00000"
+                             size="0x40000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x3E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x40000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x1000"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x4000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x1000"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega256A3bu"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega256a3bu"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 256KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA256A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega128A1">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox128a1.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega128A1.atdf"/>
+                  <at:variant ordercode="ATXMEGA128A1-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA128A1-CU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x0000"
+                             size="0x20000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x1E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x20000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x2000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x4000"
+                             size="0xBFFF"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="EXTERNAL_SRAM"
+                             external="true"
+                             address-space="data"/>
+                  <at:memory start="0x0000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.qt600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega128A1"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega128a1u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega128a1u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega128a1"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A1 Microcontroller, 128KB Flash, 100-pin</description>
+            <book name="http://www.atmel.com/images/Atmel-8067-8-and-16-bit-AVR-Microcontrollers-ATxmega64A1-ATxmega128A1_Datasheet.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA128A1.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega128A3">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox128a3.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega128A3.atdf"/>
+                  <at:variant ordercode="ATXMEGA128A3-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA128A3-MU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x0000"
+                             size="0x20000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x1E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x20000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x2000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x0000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega128A3"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega128a3"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 128KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA128A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega128A3U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox128a3u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega128A3U.atdf"/>
+                  <at:variant ordercode="ATxmega128A3U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega128A3U-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega128A3U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:variant ordercode="ATxmega128A3U-MN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x20000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x1E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x20000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x2000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega128A3u"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega128a3u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 128KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA128A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega64A4U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox64a4u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega64A4U.atdf"/>
+                  <at:variant ordercode="ATxmega64A4U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega64A4U-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega64A4U-CU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega64A4U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:variant ordercode="ATxmega64A4U-M7"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x10000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0F000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x10000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x1000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega64A4U"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega128a4.dll"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega64a4u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A4 Microcontroller, 64KB Flash, 44-pin, USB Full-speed Device</description>
+            <book name="http://www.atmel.com/images/Atmel-8331-8-and-16-bit-AVR-Microcontroller-XMEGA-AU_Manual.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA64A4U.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega32A4U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox32a4u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega32A4U.atdf"/>
+                  <at:variant ordercode="ATxmega32A4U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega32A4U-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega32A4U-CU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega32A4U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:variant ordercode="ATxmega32A4U-M7"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x8000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x07000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x08000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0400"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x1000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x0400"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega32A4U"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega32a4u.dll"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega32a4u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A4 Microcontroller, 32KB Flash, 44-pin</description>
+            <book name="http://www.atmel.com/images/Atmel-8069-8-and-16-bit-AVR-AMEGA-A4-Microcontrollers_Datasheet.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA32A4.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega192A3">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox192a3.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega192A3.atdf"/>
+                  <at:variant ordercode="ATXMEGA192A3-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA192A3-MU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x0000"
+                             size="0x30000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x2E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x30000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x4000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x0000"
+                             size="0x800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega192A3"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega192a3"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 192KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA192A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega64A1">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox64a1.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega64A1.atdf"/>
+                  <at:variant ordercode="ATXMEGA64A1-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA64A1-CU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x0000"
+                             size="0x10000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0F000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x10000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x1000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x3000"
+                             size="0xCFFF"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="EXTERNAL_SRAM"
+                             external="true"
+                             address-space="data"/>
+                  <at:memory start="0x0000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega64A1"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega128a1u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega128a1u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega64a1"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A1 Microcontroller, 64KB Flash, 100-pin</description>
+            <book name="http://www.atmel.com/images/Atmel-8067-8-and-16-bit-AVR-Microcontrollers-ATxmega64A1-ATxmega128A1_Datasheet.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA64A1.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega64A1U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox64a1u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega64A1U.atdf"/>
+                  <at:variant ordercode="ATxmega64A1U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega64A1U-CU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega64A1U-C7U"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega64A1U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x10000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0F000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x10000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x001000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x000800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x001000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x3000"
+                             size="0xCFFF"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="EXTERNAL_SRAM"
+                             external="true"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega64A1u"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega128a1u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega128a1u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega64a1u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A1 Microcontroller, 64KB Flash, 100-pin</description>
+            <book name="http://www.atmel.com/images/Atmel-8067-8-and-16-bit-AVR-Microcontrollers-ATxmega64A1-ATxmega128A1_Datasheet.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA64A1.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega32A4">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox32a4.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega32A4.atdf"/>
+                  <at:variant ordercode="ATXMEGA32A4-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA32A4-MU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x0000"
+                             size="0x8000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x07000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x8000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0400"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x1000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x0000"
+                             size="0x0400"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega32A4"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega32a4u.dll"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega32a4"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A4 Microcontroller, 32KB Flash, 44-pin</description>
+            <book name="http://www.atmel.com/images/Atmel-8069-8-and-16-bit-AVR-AMEGA-A4-Microcontrollers_Datasheet.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA32A4.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega256A3U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox256a3u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega256A3U.atdf"/>
+                  <at:variant ordercode="ATxmega256A3U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega256A3U-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega256A3U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:variant ordercode="ATxmega256A3U-MN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x40000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x3E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x40000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x1000"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x4000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x1000"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega256A3u"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega256a3u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 256KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA256A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega256A3B">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox256a3b.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega256A3B.atdf"/>
+                  <at:variant ordercode="ATXMEGA256A3B-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA256A3B-MU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x00000"
+                             size="0x40000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x3E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x40000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x00000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x01000"
+                             size="0x1000"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x02000"
+                             size="0x4000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x1000"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega256A3b"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega256a3b"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 256KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA256A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega64A3U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox64a3u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega64A3U.atdf"/>
+                  <at:variant ordercode="ATxmega64A3U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega64A3U-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega64A3U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:variant ordercode="ATxmega64A3U-MN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x10000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0F000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x10000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x1000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega64A3u"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega64a3u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 64KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA64A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega192A3U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox192a3u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega192A3U.atdf"/>
+                  <at:variant ordercode="ATxmega192A3U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega192A3U-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega192A3U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:variant ordercode="ATxmega192A3U-MN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x30000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x2E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x30000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="512"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x4000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:interface type="xmegajtag" name="JTAG"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega192A3u"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega256a3u.dll"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.linux64"
+                               value="simulator/linux64/libatxmega256a3u.so"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega192a3u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A3 Microcontroller, 192KB Flash, 64-pin</description>
+            <book name="http://www.atmel.com/images/doc8077.pdf" title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA192A3.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega16A4U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox16a4u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega16A4U.atdf"/>
+                  <at:variant ordercode="ATxmega16A4U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega16A4U-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega16A4U-CU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega16A4U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:variant ordercode="ATxmega16A4U-M7"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x4000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x03000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x04000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0400"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x0800"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x0400"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega16A4U"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega32a4u.dll"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega16a4u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A4 Microcontroller, 16KB Flash, 44-pin</description>
+            <book name="http://www.atmel.com/images/Atmel-8069-8-and-16-bit-AVR-AMEGA-A4-Microcontrollers_Datasheet.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA16A4.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega16A4">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox16a4.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega16A4.atdf"/>
+                  <at:variant ordercode="ATXMEGA16A4-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:variant ordercode="ATXMEGA16A4-MU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="0"
+                              tempmax="0"/>
+                  <at:memory start="0x0000"
+                             size="0x4000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x3000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x4000"
+                             size="0x1000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x1000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x0400"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x0800"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x0000"
+                             size="0x0400"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega16A4"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega32a4u.dll"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega16a4"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A4 Microcontroller, 16KB Flash, 44-pin</description>
+            <book name="http://www.atmel.com/images/Atmel-8069-8-and-16-bit-AVR-AMEGA-A4-Microcontrollers_Datasheet.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA16A4.aspx"
+                  title="Device Page"/>
+         </device>
+         <device Dname="ATxmega128A4U">
+            <processor Dcore="AVR8_XMEGA"
+                       Dendian="Little-endian"
+                       Dmpu="NO_MPU"
+                       Dfpu="NO_FPU"/>
+            <compile header="include/avr/iox128a4u.h"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATxmega128A4U.atdf"/>
+                  <at:variant ordercode="ATxmega128A4U-AU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega128A4U-MH"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega128A4U-CU"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="85"/>
+                  <at:variant ordercode="ATxmega128A4U-AN"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:variant ordercode="ATxmega128A4U-M7"
+                              vccmin="1.6"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="105"/>
+                  <at:memory start="0x00000"
+                             size="0x20000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APP_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x1E000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="APPTABLE_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x20000"
+                             size="0x2000"
+                             type="flash"
+                             rw="RW"
+                             exec="1"
+                             name="BOOT_SECTION"
+                             pagesize="256"
+                             address-space="prog"/>
+                  <at:memory start="0x0000"
+                             size="0x001000"
+                             type="io"
+                             rw="RW"
+                             exec="0"
+                             name="IO"
+                             address-space="data"/>
+                  <at:memory start="0x1000"
+                             size="0x000800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="MAPPED_EEPROM"
+                             address-space="data"/>
+                  <at:memory start="0x2000"
+                             size="0x002000"
+                             type="ram"
+                             rw="RW"
+                             exec="0"
+                             name="INTERNAL_SRAM"
+                             address-space="data"/>
+                  <at:memory start="0x00000"
+                             size="0x0800"
+                             type="eeprom"
+                             rw="RW"
+                             exec="0"
+                             name="EEPROM"
+                             pagesize="32"
+                             address-space="eeprom"/>
+                  <at:interface type="pdi" name="PDI"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrdragon"/>
+                  <at:tool id="com.atmel.avrdbg.tool.ispmk2"/>
+                  <at:tool id="com.atmel.avrdbg.tool.avrone"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbgc"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemkii"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.stk600"/>
+                  <at:tool id="com.atmel.avrdbg.tool.flip"/>
+                  <at:tool id="com.atmel.avrdbg.tool.simulator"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.key" value="ATxmega128A4U"/>
+                  <at:property name="com.atmel.avrdbg.tool.simulator.model.win32"
+                               value="simulator/win32/libatxmega128a4.dll"/>
+                  <at:property name="com.atmel.gcc.options.mmcu" value="atxmega128a4u"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone AVRASM Project">
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.asm)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="AVR8-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="AVRASM" component="AVRASM"/>
+               </at:extension>
+            </environment>
+            <description>8/16-bit AVR XMEGA A4 Microcontroller, 128KB Flash, 44-pin, USB Full-speed Device</description>
+            <book name="http://www.atmel.com/images/Atmel-8331-8-and-16-bit-AVR-Microcontroller-XMEGA-AU_Manual.pdf"
+                  title="Datasheet"/>
+            <book name="http://www.atmel.com/devices/ATXMEGA128A4U.aspx"
+                  title="Device Page"/>
+         </device>
+      </family>
+   </devices>
+   <conditions>
+      <condition id="ARMCC">
+         <accept Tcompiler="ARMCC"/>
+      </condition>
+      <condition id="ARMCC Exe">
+         <accept Tcompiler="ARMCC" Toutput="exe"/>
+      </condition>
+      <condition id="GCC">
+         <accept Tcompiler="GCC"/>
+      </condition>
+      <condition id="GCC Exe">
+         <accept Tcompiler="GCC" Toutput="exe"/>
+      </condition>
+      <condition id="IAR">
+         <accept Tcompiler="IAR"/>
+      </condition>
+      <condition id="IAR Exe">
+         <accept Tcompiler="IAR" Toutput="exe"/>
+      </condition>
+      <condition id="C">
+         <accept Tcompiler="ARMCC"/>
+         <accept Tcompiler="GCC"/>
+         <accept Tcompiler="IAR"/>
+      </condition>
+      <condition id="C Exe">
+         <accept Tcompiler="ARMCC" Toutput="exe"/>
+         <accept Tcompiler="GCC" Toutput="exe"/>
+         <accept Tcompiler="IAR" Toutput="exe"/>
+      </condition>
+      <condition id="C Lib">
+         <accept Tcompiler="ARMCC" Toutput="lib"/>
+         <accept Tcompiler="GCC" Toutput="lib"/>
+         <accept Tcompiler="IAR" Toutput="lib"/>
+      </condition>
+      <condition id="AVRASM">
+         <require Tcompiler="AVRASM"/>
+      </condition>
+      <condition id="ATxmega128A1U">
+         <require Dvendor="Atmel:3" Dname="ATxmega128A1U"/>
+      </condition>
+      <condition id="ATxmega64A3">
+         <require Dvendor="Atmel:3" Dname="ATxmega64A3"/>
+      </condition>
+      <condition id="ATxmega256A3">
+         <require Dvendor="Atmel:3" Dname="ATxmega256A3"/>
+      </condition>
+      <condition id="ATxmega256A3BU">
+         <require Dvendor="Atmel:3" Dname="ATxmega256A3BU"/>
+      </condition>
+      <condition id="ATxmega128A1">
+         <require Dvendor="Atmel:3" Dname="ATxmega128A1"/>
+      </condition>
+      <condition id="ATxmega128A3">
+         <require Dvendor="Atmel:3" Dname="ATxmega128A3"/>
+      </condition>
+      <condition id="ATxmega128A3U">
+         <require Dvendor="Atmel:3" Dname="ATxmega128A3U"/>
+      </condition>
+      <condition id="ATxmega64A4U">
+         <require Dvendor="Atmel:3" Dname="ATxmega64A4U"/>
+      </condition>
+      <condition id="ATxmega32A4U">
+         <require Dvendor="Atmel:3" Dname="ATxmega32A4U"/>
+      </condition>
+      <condition id="ATxmega192A3">
+         <require Dvendor="Atmel:3" Dname="ATxmega192A3"/>
+      </condition>
+      <condition id="ATxmega64A1">
+         <require Dvendor="Atmel:3" Dname="ATxmega64A1"/>
+      </condition>
+      <condition id="ATxmega64A1U">
+         <require Dvendor="Atmel:3" Dname="ATxmega64A1U"/>
+      </condition>
+      <condition id="ATxmega32A4">
+         <require Dvendor="Atmel:3" Dname="ATxmega32A4"/>
+      </condition>
+      <condition id="ATxmega256A3U">
+         <require Dvendor="Atmel:3" Dname="ATxmega256A3U"/>
+      </condition>
+      <condition id="ATxmega256A3B">
+         <require Dvendor="Atmel:3" Dname="ATxmega256A3B"/>
+      </condition>
+      <condition id="ATxmega64A3U">
+         <require Dvendor="Atmel:3" Dname="ATxmega64A3U"/>
+      </condition>
+      <condition id="ATxmega192A3U">
+         <require Dvendor="Atmel:3" Dname="ATxmega192A3U"/>
+      </condition>
+      <condition id="ATxmega16A4U">
+         <require Dvendor="Atmel:3" Dname="ATxmega16A4U"/>
+      </condition>
+      <condition id="ATxmega16A4">
+         <require Dvendor="Atmel:3" Dname="ATxmega16A4"/>
+      </condition>
+      <condition id="ATxmega128A4U">
+         <require Dvendor="Atmel:3" Dname="ATxmega128A4U"/>
+      </condition>
+   </conditions>
+   <components>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega128A1U">
+         <description>Headers and startup code for Atmel ATxmega128A1U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox128a1u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega128a1u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega128a1udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega64A3">
+         <description>Headers and startup code for Atmel ATxmega64A3</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox64a3.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC" category="libraryPrefix" name="gcc/dev/atxmega64a3"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega64a3def.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega256A3">
+         <description>Headers and startup code for Atmel ATxmega256A3</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox256a3.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega256a3"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega256a3def.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega256A3BU">
+         <description>Headers and startup code for Atmel ATxmega256A3BU</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox256a3bu.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega256a3bu"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega256a3budef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega128A1">
+         <description>Headers and startup code for Atmel ATxmega128A1</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox128a1.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega128a1"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega128a1def.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega128A3">
+         <description>Headers and startup code for Atmel ATxmega128A3</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox128a3.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega128a3"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega128a3def.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega128A3U">
+         <description>Headers and startup code for Atmel ATxmega128A3U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox128a3u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega128a3u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega128a3udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega64A4U">
+         <description>Headers and startup code for Atmel ATxmega64A4U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox64a4u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega64a4u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega64a4udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega32A4U">
+         <description>Headers and startup code for Atmel ATxmega32A4U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox32a4u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega32a4u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega32a4udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega192A3">
+         <description>Headers and startup code for Atmel ATxmega192A3</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox192a3.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega192a3"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega192a3def.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega64A1">
+         <description>Headers and startup code for Atmel ATxmega64A1</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox64a1.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC" category="libraryPrefix" name="gcc/dev/atxmega64a1"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega64a1def.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega64A1U">
+         <description>Headers and startup code for Atmel ATxmega64A1U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox64a1u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega64a1u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega64a1udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega32A4">
+         <description>Headers and startup code for Atmel ATxmega32A4</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox32a4.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC" category="libraryPrefix" name="gcc/dev/atxmega32a4"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega32a4def.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega256A3U">
+         <description>Headers and startup code for Atmel ATxmega256A3U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox256a3u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega256a3u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega256a3udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega256A3B">
+         <description>Headers and startup code for Atmel ATxmega256A3B</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox256a3b.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega256a3b"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega256a3bdef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega64A3U">
+         <description>Headers and startup code for Atmel ATxmega64A3U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox64a3u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega64a3u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega64a3udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega192A3U">
+         <description>Headers and startup code for Atmel ATxmega192A3U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox192a3u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega192a3u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega192a3udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega16A4U">
+         <description>Headers and startup code for Atmel ATxmega16A4U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox16a4u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega16a4u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega16a4udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega16A4">
+         <description>Headers and startup code for Atmel ATxmega16A4</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox16a4.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC" category="libraryPrefix" name="gcc/dev/atxmega16a4"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega16a4def.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.1.0"
+                 condition="ATxmega128A4U">
+         <description>Headers and startup code for Atmel ATxmega128A4U</description>
+         <files>
+            <file condition="C" category="include" name="include"/>
+            <file condition="C" category="header" name="include/avr/iox128a4u.h"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe"
+                  category="source"
+                  name="templates/main.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.c"
+                  attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib"
+                  category="source"
+                  name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC"
+                  category="libraryPrefix"
+                  name="gcc/dev/atxmega128a4u"/>
+            <file condition="AVRASM" category="include" name="avrasm/inc"/>
+            <file condition="AVRASM"
+                  category="header"
+                  name="avrasm/inc/ATxmega128a4udef.inc"/>
+            <file condition="AVRASM"
+                  category="source"
+                  name="avrasm/templates/main.asm"
+                  attr="template"
+                  select="Main file (.asm)"/>
+         </files>
+      </component>
+   </components>
+</package>

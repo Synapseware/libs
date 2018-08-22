@@ -1,0 +1,3289 @@
+<?xml version='1.0' encoding='ASCII'?>
+<package schemaVersion="1.0">
+  <content>
+    <fileset id="common.headers.avr8">
+      <includes pattern="avr/iom164.h"/>
+      <includes pattern="avr/iom169.h"/>
+      <includes pattern="avr/iocanxx.h"/>
+      <includes pattern="avr/iomx8.h"/>
+      <includes pattern="avr/iomxx0_1.h"/>
+      <includes pattern="avr/iomxx4.h"/>
+      <includes pattern="avr/iomxxhva.h"/>
+      <includes pattern="avr/iousbxx2.h"/>
+      <includes pattern="avr/iousbxx6_7.h"/>
+      <includes pattern="avr/iotnx4.h"/>
+      <includes pattern="avr/iotnx5.h"/>
+      <includes pattern="avr/iotnx61.h"/>
+    </fileset>
+    <fileset id="simulator.win32.carbon">
+      <includes pattern="ffwAPI.dll"/>
+      <includes pattern="libcarbon5.dll"/>
+      <includes pattern="libcarbonaux.dll"/>
+      <includes pattern="msvcr71.dll"/>
+      <includes pattern="pthreadGC.dll"/>
+    </fileset>
+    <fileset id="simulator.linux64.carbon">
+      <includes pattern="libcarbon5.so"/>
+    </fileset>
+    <fileset id="simulator.win32.vtoc">
+      <includes pattern="msvcr70.dll"/>
+      <includes pattern="vtoc.dll"/>
+    </fileset>
+    <resources target="ATtiny102">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny102.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny102.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn102.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny102/avrtiny/crtattiny102.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny102/device-specs/specs-attiny102"/>
+        <meta key="mmcu-option" value="attiny102"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny102/avrtiny/libattiny102.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn102def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyp.dll"/>
+        <meta key="device" value="ATTINY102"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyp.so"/>
+        <meta key="device" value="ATTINY102"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny85">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny85.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny85.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn85.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny85/avr25/crtattiny85.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny85/device-specs/specs-attiny85"/>
+        <meta key="mmcu-option" value="attiny85"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny85/avr25/libattiny85.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn85def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny85.dll"/>
+        <includes fileset="simulator.win32.vtoc"/>
+        <meta key="device" value="ATtiny85"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny43U">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny43U.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny43U.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn43u.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny43u/avr25/crtattiny43u.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny43u/device-specs/specs-attiny43u"/>
+        <meta key="mmcu-option" value="attiny43u"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny43u/avr25/libattiny43u.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn43udef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny43u.dll"/>
+        <includes fileset="simulator.win32.vtoc"/>
+        <meta key="device" value="ATtiny43u"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny87">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny87.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny87.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn87.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny87/avr25/crtattiny87.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny87/device-specs/specs-attiny87"/>
+        <meta key="mmcu-option" value="attiny87"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny87/avr25/libattiny87.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn87def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny104">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny104.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny104.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn104.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny104/avrtiny/crtattiny104.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny104/device-specs/specs-attiny104"/>
+        <meta key="mmcu-option" value="attiny104"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny104/avrtiny/libattiny104.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn104def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyp.dll"/>
+        <meta key="device" value="ATTINY104"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyp.so"/>
+        <meta key="device" value="ATTINY104"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny4313">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny4313.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny4313.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn4313.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny4313/avr25/crtattiny4313.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny4313/device-specs/specs-attiny4313"/>
+        <meta key="mmcu-option" value="attiny4313"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny4313/avr25/libattiny4313.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn4313def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny4313.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny4313"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny4313.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny4313"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny88">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny88.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny88.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn88.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny88/avr25/crtattiny88.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny88/device-specs/specs-attiny88"/>
+        <meta key="mmcu-option" value="attiny88"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny88/avr25/libattiny88.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn88def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny88.dll"/>
+        <includes fileset="simulator.win32.vtoc"/>
+        <meta key="device" value="ATtiny88"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny202">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny202.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny202.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn202.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny202/avrxmega3/short-calls/crtattiny202.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny202/device-specs/specs-attiny202"/>
+        <meta key="mmcu-option" value="attiny202"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny202/avrxmega3/short-calls/libattiny202.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn202def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY202"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY202"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny204">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny204.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny204.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn204.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny204/avrxmega3/short-calls/crtattiny204.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny204/device-specs/specs-attiny204"/>
+        <meta key="mmcu-option" value="attiny204"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny204/avrxmega3/short-calls/libattiny204.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn204def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY204"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY204"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny861">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny861.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny861.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn861.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny861/avr25/crtattiny861.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny861/device-specs/specs-attiny861"/>
+        <meta key="mmcu-option" value="attiny861"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny861/avr25/libattiny861.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn861def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny1661.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny861"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny1661.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny861"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny261">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny261.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny261.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn261.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny261/avr25/tiny-stack/crtattiny261.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny261/device-specs/specs-attiny261"/>
+        <meta key="mmcu-option" value="attiny261"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny261/avr25/tiny-stack/libattiny261.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn261def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny1661.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny261"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny1661.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny261"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny44A">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny44A.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny44A.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn44a.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny44a/avr25/crtattiny44a.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny44a/device-specs/specs-attiny44a"/>
+        <meta key="mmcu-option" value="attiny44a"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny44a/avr25/libattiny44a.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn44adef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny84a.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny44A"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny84a.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny44A"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny167">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny167.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny167.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn167.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny167/avr35/crtattiny167.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny167/device-specs/specs-attiny167"/>
+        <meta key="mmcu-option" value="attiny167"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny167/avr35/libattiny167.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn167def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny5">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny5.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny5.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn5.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny5/avrtiny/crtattiny5.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny5/device-specs/specs-attiny5"/>
+        <meta key="mmcu-option" value="attiny5"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny5/avrtiny/libattiny5.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn5def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny10.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny5"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny10.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny5"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny25">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny25.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny25.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn25.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny25/avr25/tiny-stack/crtattiny25.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny25/device-specs/specs-attiny25"/>
+        <meta key="mmcu-option" value="attiny25"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny25/avr25/tiny-stack/libattiny25.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn25def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny25.dll"/>
+        <includes fileset="simulator.win32.vtoc"/>
+        <meta key="device" value="ATtiny25"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny84A">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny84A.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny84A.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn84a.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny84a/avr25/crtattiny84a.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny84a/device-specs/specs-attiny84a"/>
+        <meta key="mmcu-option" value="attiny84a"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny84a/avr25/libattiny84a.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn84adef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny84a.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny84A"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny84a.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny84A"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny861A">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny861A.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny861A.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn861a.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny861a/avr25/crtattiny861a.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny861a/device-specs/specs-attiny861a"/>
+        <meta key="mmcu-option" value="attiny861a"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny861a/avr25/libattiny861a.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn861adef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny1661.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny861A"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny1661.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny861A"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny84">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny84.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny84.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn84.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny84/avr25/crtattiny84.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny84/device-specs/specs-attiny84"/>
+        <meta key="mmcu-option" value="attiny84"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny84/avr25/libattiny84.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn84def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny84a.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny84"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny84a.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny84"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny3217">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny3217.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny3217.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn3217.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny3217/avrxmega3/crtattiny3217.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny3217/device-specs/specs-attiny3217"/>
+        <meta key="mmcu-option" value="attiny3217"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny3217/avrxmega3/libattiny3217.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn3217def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxd.dll"/>
+        <meta key="device" value="ATTINY3217"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxd.so"/>
+        <meta key="device" value="ATTINY3217"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny3216">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny3216.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny3216.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn3216.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny3216/avrxmega3/crtattiny3216.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny3216/device-specs/specs-attiny3216"/>
+        <meta key="mmcu-option" value="attiny3216"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny3216/avrxmega3/libattiny3216.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn3216def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxd.dll"/>
+        <meta key="device" value="ATTINY3216"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxd.so"/>
+        <meta key="device" value="ATTINY3216"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny2313A">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny2313A.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny2313A.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn2313a.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny2313a/avr25/tiny-stack/crtattiny2313a.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny2313a/device-specs/specs-attiny2313a"/>
+        <meta key="mmcu-option" value="attiny2313a"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny2313a/avr25/tiny-stack/libattiny2313a.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn2313adef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny4313.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny2313A"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny4313.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny2313A"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny3214">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny3214.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny3214.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn3214.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny3214/avrxmega3/crtattiny3214.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny3214/device-specs/specs-attiny3214"/>
+        <meta key="mmcu-option" value="attiny3214"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny3214/avrxmega3/libattiny3214.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn3214def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxd.dll"/>
+        <meta key="device" value="ATTINY3214"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxd.so"/>
+        <meta key="device" value="ATTINY3214"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny814">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny814.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny814.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn814.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny814/avrxmega3/short-calls/crtattiny814.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny814/device-specs/specs-attiny814"/>
+        <meta key="mmcu-option" value="attiny814"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny814/avrxmega3/short-calls/libattiny814.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn814def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxa.dll"/>
+        <meta key="device" value="ATTINY814"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxa.so"/>
+        <meta key="device" value="ATTINY814"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny817">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny817.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny817.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn817.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny817/avrxmega3/short-calls/crtattiny817.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny817/device-specs/specs-attiny817"/>
+        <meta key="mmcu-option" value="attiny817"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny817/avrxmega3/short-calls/libattiny817.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn817def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxa.dll"/>
+        <meta key="device" value="ATTINY817"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxa.so"/>
+        <meta key="device" value="ATTINY817"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny816">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny816.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny816.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn816.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny816/avrxmega3/short-calls/crtattiny816.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny816/device-specs/specs-attiny816"/>
+        <meta key="mmcu-option" value="attiny816"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny816/avrxmega3/short-calls/libattiny816.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn816def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxa.dll"/>
+        <meta key="device" value="ATTINY816"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxa.so"/>
+        <meta key="device" value="ATTINY816"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny1634">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny1634.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny1634.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn1634.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny1634/avr35/crtattiny1634.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny1634/device-specs/specs-attiny1634"/>
+        <meta key="mmcu-option" value="attiny1634"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny1634/avr35/libattiny1634.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn1634def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny3234.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny1634"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny3234.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny1634"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny15">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny15.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny15.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn15.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.S"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.S"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.S"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.S"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny15/./crtattiny15.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny15/device-specs/specs-attiny15"/>
+        <meta key="AVR_DEV_LIB_NAME" value=""/>
+        <meta key="mmcu-option" value="attiny15"/>
+        <meta key="compiler-support" value="false"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny15/./libattiny15.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn15def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny12">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny12.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny12.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn12.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.S"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.S"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.S"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.S"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny12/./crtattiny12.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny12/device-specs/specs-attiny12"/>
+        <meta key="AVR_DEV_LIB_NAME" value=""/>
+        <meta key="mmcu-option" value="attiny12"/>
+        <meta key="compiler-support" value="false"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny12/./libattiny12.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn12def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny1614">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny1614.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny1614.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn1614.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny1614/avrxmega3/crtattiny1614.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny1614/device-specs/specs-attiny1614"/>
+        <meta key="mmcu-option" value="attiny1614"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny1614/avrxmega3/libattiny1614.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn1614def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxc.dll"/>
+        <meta key="device" value="ATTINY1614"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxc.so"/>
+        <meta key="device" value="ATTINY1614"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny1617">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny1617.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny1617.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn1617.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny1617/avrxmega3/crtattiny1617.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny1617/device-specs/specs-attiny1617"/>
+        <meta key="mmcu-option" value="attiny1617"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny1617/avrxmega3/libattiny1617.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn1617def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxc.dll"/>
+        <meta key="device" value="ATTINY1617"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxc.so"/>
+        <meta key="device" value="ATTINY1617"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny1616">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny1616.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny1616.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn1616.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny1616/avrxmega3/crtattiny1616.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny1616/device-specs/specs-attiny1616"/>
+        <meta key="mmcu-option" value="attiny1616"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny1616/avrxmega3/libattiny1616.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn1616def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxc.dll"/>
+        <meta key="device" value="ATTINY1616"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxc.so"/>
+        <meta key="device" value="ATTINY1616"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny406">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny406.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny406.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn406.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny406/avrxmega3/short-calls/crtattiny406.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny406/device-specs/specs-attiny406"/>
+        <meta key="mmcu-option" value="attiny406"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny406/avrxmega3/short-calls/libattiny406.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn406def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY406"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY406"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny461">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny461.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny461.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn461.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny461/avr25/crtattiny461.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny461/device-specs/specs-attiny461"/>
+        <meta key="mmcu-option" value="attiny461"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny461/avr25/libattiny461.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn461def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny1661.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny461"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny1661.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny461"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny404">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny404.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny404.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn404.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny404/avrxmega3/short-calls/crtattiny404.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny404/device-specs/specs-attiny404"/>
+        <meta key="mmcu-option" value="attiny404"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny404/avrxmega3/short-calls/libattiny404.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn404def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY404"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY404"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny841">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny841.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny841.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn841.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny841/avr25/crtattiny841.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny841/device-specs/specs-attiny841"/>
+        <meta key="mmcu-option" value="attiny841"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny841/avr25/libattiny841.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn841def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyn.dll"/>
+        <meta key="device" value="ATtiny841"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyn.so"/>
+        <meta key="device" value="ATtiny841"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny402">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny402.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny402.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn402.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny402/avrxmega3/short-calls/crtattiny402.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny402/device-specs/specs-attiny402"/>
+        <meta key="mmcu-option" value="attiny402"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny402/avrxmega3/short-calls/libattiny402.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn402def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY402"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY402"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny13">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny13.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny13.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn13.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny13/avr25/tiny-stack/crtattiny13.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny13/device-specs/specs-attiny13"/>
+        <meta key="mmcu-option" value="attiny13"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny13/avr25/tiny-stack/libattiny13.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn13def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny13a.dll"/>
+        <includes fileset="simulator.win32.vtoc"/>
+        <meta key="device" value="ATtiny13"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny441">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny441.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny441.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn441.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny441/avr25/crtattiny441.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny441/device-specs/specs-attiny441"/>
+        <meta key="mmcu-option" value="attiny441"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny441/avr25/libattiny441.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn441def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyn.dll"/>
+        <meta key="device" value="ATtiny441"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyn.so"/>
+        <meta key="device" value="ATtiny441"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny10">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny10.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny10.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn10.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny10/avrtiny/crtattiny10.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny10/device-specs/specs-attiny10"/>
+        <meta key="mmcu-option" value="attiny10"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny10/avrtiny/libattiny10.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn10def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny10.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny10"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny10.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny10"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny11">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny11.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny11.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn11.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.S"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.S"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.S"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.S"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny11/./crtattiny11.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny11/device-specs/specs-attiny11"/>
+        <meta key="AVR_DEV_LIB_NAME" value=""/>
+        <meta key="mmcu-option" value="attiny11"/>
+        <meta key="compiler-support" value="false"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny11/./libattiny11.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn11def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny828">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny828.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny828.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn828.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny828/avr25/crtattiny828.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny828/device-specs/specs-attiny828"/>
+        <meta key="mmcu-option" value="attiny828"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny828/avr25/libattiny828.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn828def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny828q.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny828"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny828q.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny828"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny214">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny214.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny214.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn214.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny214/avrxmega3/short-calls/crtattiny214.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny214/device-specs/specs-attiny214"/>
+        <meta key="mmcu-option" value="attiny214"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny214/avrxmega3/short-calls/libattiny214.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn214def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY214"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY214"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny212">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny212.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny212.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn212.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny212/avrxmega3/short-calls/crtattiny212.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny212/device-specs/specs-attiny212"/>
+        <meta key="mmcu-option" value="attiny212"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny212/avrxmega3/short-calls/libattiny212.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn212def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY212"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY212"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny4">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny4.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny4.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn4.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny4/avrtiny/crtattiny4.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny4/device-specs/specs-attiny4"/>
+        <meta key="mmcu-option" value="attiny4"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny4/avrtiny/libattiny4.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn4def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny10.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny4"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny10.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny4"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny261A">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny261A.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny261A.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn261a.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny261a/avr25/tiny-stack/crtattiny261a.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny261a/device-specs/specs-attiny261a"/>
+        <meta key="mmcu-option" value="attiny261a"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny261a/avr25/tiny-stack/libattiny261a.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn261adef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny1661.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny261A"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny1661.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny261A"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny461A">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny461A.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny461A.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn461a.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny461a/avr25/crtattiny461a.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny461a/device-specs/specs-attiny461a"/>
+        <meta key="mmcu-option" value="attiny461a"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny461a/avr25/libattiny461a.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn461adef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny1661.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny461A"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny1661.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny461A"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny807">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny807.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny807.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn807.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny807/avrxmega3/short-calls/crtattiny807.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny807/device-specs/specs-attiny807"/>
+        <meta key="mmcu-option" value="attiny807"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny807/avrxmega3/short-calls/libattiny807.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn807def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxf.dll"/>
+        <meta key="device" value="ATTINY807"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxf.so"/>
+        <meta key="device" value="ATTINY807"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny45">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny45.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny45.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn45.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny45/avr25/crtattiny45.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny45/device-specs/specs-attiny45"/>
+        <meta key="mmcu-option" value="attiny45"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny45/avr25/libattiny45.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn45def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny45.dll"/>
+        <includes fileset="simulator.win32.vtoc"/>
+        <meta key="device" value="ATtiny45"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny44">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny44.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny44.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn44.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny44/avr25/crtattiny44.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny44/device-specs/specs-attiny44"/>
+        <meta key="mmcu-option" value="attiny44"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny44/avr25/libattiny44.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn44def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny84a.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny44"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny84a.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny44"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny26">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny26.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny26.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn26.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny26/tiny-stack/crtattiny26.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny26/device-specs/specs-attiny26"/>
+        <meta key="mmcu-option" value="attiny26"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny26/tiny-stack/libattiny26.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn26def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny1661.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny26"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny1661.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny26"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny416">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny416.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny416.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn416.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny416/avrxmega3/short-calls/crtattiny416.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny416/device-specs/specs-attiny416"/>
+        <meta key="mmcu-option" value="attiny416"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny416/avrxmega3/short-calls/libattiny416.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn416def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY416"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY416"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny806">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny806.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny806.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn806.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny806/avrxmega3/short-calls/crtattiny806.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny806/device-specs/specs-attiny806"/>
+        <meta key="mmcu-option" value="attiny806"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny806/avrxmega3/short-calls/libattiny806.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn806def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxf.dll"/>
+        <meta key="device" value="ATTINY806"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxf.so"/>
+        <meta key="device" value="ATTINY806"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny40">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny40.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny40.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn40.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny40/avrtiny/crtattiny40.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny40/device-specs/specs-attiny40"/>
+        <meta key="mmcu-option" value="attiny40"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny40/avrtiny/libattiny40.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn40def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny40.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny40"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny40.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny40"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny804">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny804.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny804.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn804.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny804/avrxmega3/short-calls/crtattiny804.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny804/device-specs/specs-attiny804"/>
+        <meta key="mmcu-option" value="attiny804"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny804/avrxmega3/short-calls/libattiny804.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn804def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxf.dll"/>
+        <meta key="device" value="ATTINY804"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxf.so"/>
+        <meta key="device" value="ATTINY804"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny24A">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny24A.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny24A.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn24a.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny24a/avr25/tiny-stack/crtattiny24a.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny24a/device-specs/specs-attiny24a"/>
+        <meta key="mmcu-option" value="attiny24a"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny24a/avr25/tiny-stack/libattiny24a.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn24adef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny84a.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny24A"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny84a.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny24A"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny48">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny48.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny48.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn48.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny48/avr25/crtattiny48.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny48/device-specs/specs-attiny48"/>
+        <meta key="mmcu-option" value="attiny48"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny48/avr25/libattiny48.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn48def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny48.dll"/>
+        <includes fileset="simulator.win32.vtoc"/>
+        <meta key="device" value="ATtiny48"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny2313">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny2313.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny2313.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn2313.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny2313/avr25/tiny-stack/crtattiny2313.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny2313/device-specs/specs-attiny2313"/>
+        <meta key="mmcu-option" value="attiny2313"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny2313/avr25/tiny-stack/libattiny2313.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn2313def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny4313.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny2313"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny4313.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny2313"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny20">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny20.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny20.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn20.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny20/avrtiny/crtattiny20.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny20/device-specs/specs-attiny20"/>
+        <meta key="mmcu-option" value="attiny20"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny20/avrtiny/libattiny20.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn20def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny20.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny20"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny20.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny20"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny1606">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny1606.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny1606.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn1606.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny1606/avrxmega3/crtattiny1606.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny1606/device-specs/specs-attiny1606"/>
+        <meta key="mmcu-option" value="attiny1606"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny1606/avrxmega3/libattiny1606.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn1606def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxf.dll"/>
+        <meta key="device" value="ATTINY1606"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxf.so"/>
+        <meta key="device" value="ATTINY1606"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny1607">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny1607.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny1607.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn1607.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny1607/avrxmega3/crtattiny1607.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny1607/device-specs/specs-attiny1607"/>
+        <meta key="mmcu-option" value="attiny1607"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny1607/avrxmega3/libattiny1607.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn1607def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxf.dll"/>
+        <meta key="device" value="ATTINY1607"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxf.so"/>
+        <meta key="device" value="ATTINY1607"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny1604">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny1604.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny1604.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn1604.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny1604/avrxmega3/crtattiny1604.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny1604/device-specs/specs-attiny1604"/>
+        <meta key="mmcu-option" value="attiny1604"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny1604/avrxmega3/libattiny1604.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn1604def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxf.dll"/>
+        <meta key="device" value="ATTINY1604"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxf.so"/>
+        <meta key="device" value="ATTINY1604"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny24">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny24.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny24.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn24.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny24/avr25/tiny-stack/crtattiny24.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny24/device-specs/specs-attiny24"/>
+        <meta key="mmcu-option" value="attiny24"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny24/avr25/tiny-stack/libattiny24.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn24def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny84a.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny24"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny84a.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny24"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny414">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny414.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny414.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn414.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny414/avrxmega3/short-calls/crtattiny414.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny414/device-specs/specs-attiny414"/>
+        <meta key="mmcu-option" value="attiny414"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny414/avrxmega3/short-calls/libattiny414.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn414def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY414"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY414"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny417">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny417.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny417.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn417.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny417/avrxmega3/short-calls/crtattiny417.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny417/device-specs/specs-attiny417"/>
+        <meta key="mmcu-option" value="attiny417"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny417/avrxmega3/short-calls/libattiny417.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn417def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxa.dll"/>
+        <meta key="device" value="ATTINY417"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxa.so"/>
+        <meta key="device" value="ATTINY417"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny13A">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny13A.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny13A.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn13a.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny13a/avr25/tiny-stack/crtattiny13a.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny13a/device-specs/specs-attiny13a"/>
+        <meta key="mmcu-option" value="attiny13a"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny13a/avr25/tiny-stack/libattiny13a.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn13adef.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny13a.dll"/>
+        <includes fileset="simulator.win32.vtoc"/>
+        <meta key="device" value="ATtiny13A"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny9">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny9.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny9.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn9.h"/>
+        <includes pattern="component-version.h"/>
+        <includes fileset="common.headers.avr8"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny9/avrtiny/crtattiny9.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny9/device-specs/specs-attiny9"/>
+        <meta key="mmcu-option" value="attiny9"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny9/avrtiny/libattiny9.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn9def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattiny10.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATtiny9"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattiny10.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATtiny9"/>
+      </resource>
+    </resources>
+    <resources target="ATtiny412">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATtiny412.atdf"/>
+      </resource>
+      <resource type="pic" subdir="edc">
+        <includes pattern="ATtiny412.PIC"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iotn412.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/attiny412/avrxmega3/short-calls/crtattiny412.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/attiny412/device-specs/specs-attiny412"/>
+        <meta key="mmcu-option" value="attiny412"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/attiny412/avrxmega3/short-calls/libattiny412.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="tn412def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libattinyxb.dll"/>
+        <meta key="device" value="ATTINY412"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libattinyxb.so"/>
+        <meta key="device" value="ATTINY412"/>
+      </resource>
+    </resources>
+  </content>
+  <pdsc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" compliant="false">
+        <releases>
+            <release version="1.3.BUILDNUMBER">Added TWSSRA bitfields for ATtiny20 and ATtiny40. Corrected Fuse register group size for ATtiny1607-family, ATtiny1617-family and ATtiny3217-family.</release>
+            <release version="1.3.169" date="2017-12-18">Added support for ATtiny1607, ATtiny1606, ATtiny1604, ATtiny807, ATtiny806, ATtiny804, ATtiny406, ATtiny404, ATtiny402, ATtiny204 and ATtiny202.</release>
+            <release version="1.3.147" date="2017-10-02">Updated AVR8X simulator models.</release>
+            <release version="1.3.132" date="2017-07-04">Added CCP signature for ATtiny102 and ATtiny104. Renamed interrupt ADC_ADC to ADC for ATtiny40. Renamed interrupt ANA_COMP to ANALOG_COMP for ATtiny48 and ATtiny88. Added Hi-/Lo-byte-address defines for 16-bit registers in assembler include files for the new tiny's. Added simulator model for ATtiny3217, ATtiny3216 and ATtiny3214.</release>
+            <release version="1.2.118" date="2017-02-21">Added support for ATtiny3217, ATtiny3216, ATtiny3214, ATtiny1617, ATtiny1616, ATtiny1614, ATtiny416, ATtiny414, ATtiny412, ATtiny214 and ATtiny212.</release>
+            <release version="1.2.112">Updated header files for ATtiny417, ATtiny814, ATtiny816 and ATtiny817. Simulator support for the same devices. Added support for ATtiny1617 and ATtiny1616.</release>
+            <release version="1.1.102">Added ATtiny417, ATtiny814, ATtiny816, and ATtiny817. Added GCC assembler support for ATtiny11, ATtiny12, and ATtiny15.</release>
+            <release version="1.0.79">Added ATtiny102, ATtiny104, ATtiny80 and ATtiny840. Updated documentation links.</release>
+            <release version="1.0.78">Added ATtiny102, ATtiny104, ATtiny80 and ATtiny840. Updated documentation links.</release>
+			<release version="1.0.71">Fix simulator load issue for ATtiny85, ATtiny43U, ATtiny88, ATtiny1634, ATtiny45, ATtiny48, ATtiny40, ATtiny25, and ATtiny20.</release>
+			<release version="1.0.70">Initial release.</release>
+        </releases>
+    </pdsc>
+</package>

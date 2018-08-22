@@ -1,0 +1,398 @@
+<?xml version='1.0' encoding='ASCII'?>
+<package schemaVersion="1.0">
+  <content>
+    <fileset id="simulator.win32.carbon">
+      <includes pattern="ffwAPI.dll"/>
+      <includes pattern="libcarbon5.dll"/>
+      <includes pattern="libcarbonaux.dll"/>
+      <includes pattern="msvcr71.dll"/>
+      <includes pattern="pthreadGC.dll"/>
+    </fileset>
+    <fileset id="simulator.linux64.carbon">
+      <includes pattern="libcarbon5.so"/>
+    </fileset>
+    <resources target="ATxmega64C3">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATxmega64C3.atdf"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iox64c3.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/atxmega64c3/avrxmega4/crtatxmega64c3.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/atxmega64c3/device-specs/specs-atxmega64c3"/>
+        <meta key="mmcu-option" value="atxmega64c3"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/atxmega64c3/avrxmega4/libatxmega64c3.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="ATxmega64c3def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libatxmega64c3.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATxmega64C3"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libatxmega64c3.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATxmega64C3"/>
+      </resource>
+    </resources>
+    <resources target="ATxmega16C4">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATxmega16C4.atdf"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iox16c4.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/atxmega16c4/avrxmega2/crtatxmega16c4.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/atxmega16c4/device-specs/specs-atxmega16c4"/>
+        <meta key="mmcu-option" value="atxmega16c4"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/atxmega16c4/avrxmega2/libatxmega16c4.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="ATxmega16c4def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libatxmega32c4.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATxmega16C4"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libatxmega32c4.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATxmega16C4"/>
+      </resource>
+    </resources>
+    <resources target="ATxmega256C3">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATxmega256C3.atdf"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iox256c3.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/atxmega256c3/avrxmega6/crtatxmega256c3.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/atxmega256c3/device-specs/specs-atxmega256c3"/>
+        <meta key="mmcu-option" value="atxmega256c3"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/atxmega256c3/avrxmega6/libatxmega256c3.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="ATxmega256c3def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libatxmega384c3.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATxmega256C3"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libatxmega384c3.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATxmega256C3"/>
+      </resource>
+    </resources>
+    <resources target="ATxmega384C3">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATxmega384C3.atdf"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iox384c3.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/atxmega384c3/avrxmega6/crtatxmega384c3.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/atxmega384c3/device-specs/specs-atxmega384c3"/>
+        <meta key="mmcu-option" value="atxmega384c3"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/atxmega384c3/avrxmega6/libatxmega384c3.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="ATxmega384c3def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libatxmega384c3.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATxmega384C3"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libatxmega384c3.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATxmega384C3"/>
+      </resource>
+    </resources>
+    <resources target="ATxmega32C4">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATxmega32C4.atdf"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iox32c4.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/atxmega32c4/avrxmega2/crtatxmega32c4.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/atxmega32c4/device-specs/specs-atxmega32c4"/>
+        <meta key="mmcu-option" value="atxmega32c4"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/atxmega32c4/avrxmega2/libatxmega32c4.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="ATxmega32c4def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libatxmega32c4.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATxmega32C4"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libatxmega32c4.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATxmega32C4"/>
+      </resource>
+    </resources>
+    <resources target="ATxmega128C3">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATxmega128C3.atdf"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iox128c3.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/atxmega128c3/avrxmega6/crtatxmega128c3.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/atxmega128c3/device-specs/specs-atxmega128c3"/>
+        <meta key="mmcu-option" value="atxmega128c3"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/atxmega128c3/avrxmega6/libatxmega128c3.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="ATxmega128c3def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libatxmega384c3.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATxmega128C3"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libatxmega384c3.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATxmega128C3"/>
+      </resource>
+    </resources>
+    <resources target="ATxmega32C3">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATxmega32C3.atdf"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iox32c3.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/atxmega32c3/avrxmega2/crtatxmega32c3.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/atxmega32c3/device-specs/specs-atxmega32c3"/>
+        <meta key="mmcu-option" value="atxmega32c3"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/atxmega32c3/avrxmega2/libatxmega32c3.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="ATxmega32C3def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libatxmega64c3.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATxmega32C3"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libatxmega64c3.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATxmega32C3"/>
+      </resource>
+    </resources>
+    <resources target="ATxmega192C3">
+      <resource type="atdf" subdir="atdf">
+        <includes pattern="ATxmega192C3.atdf"/>
+      </resource>
+      <resource type="c.header" subdir="include">
+        <includes pattern="avr/iox192c3.h"/>
+        <includes pattern="component-version.h"/>
+      </resource>
+      <resource type="c.source.exe.template" subdir="templates">
+        <includes pattern="main.c"/>
+      </resource>
+      <resource type="c.source.lib.template" subdir="templates">
+        <includes pattern="library.c"/>
+      </resource>
+      <resource type="cpp.source.exe.template" subdir="templates">
+        <includes pattern="main.cpp"/>
+      </resource>
+      <resource type="cpp.source.lib.template" subdir="templates">
+        <includes pattern="library.cpp"/>
+      </resource>
+      <resource type="gcc.startup.obj" subdir="gcc">
+        <includes pattern="dev/atxmega192c3/avrxmega6/crtatxmega192c3.o"/>
+      </resource>
+      <resource type="gcc.spec" subdir="gcc">
+        <includes pattern="dev/atxmega192c3/device-specs/specs-atxmega192c3"/>
+        <meta key="mmcu-option" value="atxmega192c3"/>
+      </resource>
+      <resource type="gcc.lib" subdir="gcc">
+        <includes pattern="dev/atxmega192c3/avrxmega6/libatxmega192c3.a"/>
+      </resource>
+      <resource type="avrasm.header" subdir="avrasm/inc">
+        <includes pattern="ATxmega192c3def.inc"/>
+      </resource>
+      <resource type="avrasm.source.template" subdir="avrasm/templates">
+        <includes pattern="main.asm"/>
+      </resource>
+      <resource type="simulator.win32" subdir="simulator/win32">
+        <includes pattern="libatxmega384c3.dll"/>
+        <includes fileset="simulator.win32.carbon"/>
+        <meta key="device" value="ATxmega192C3"/>
+      </resource>
+      <resource type="simulator.linux64" subdir="simulator/linux64">
+        <includes pattern="libatxmega384c3.so"/>
+        <includes fileset="simulator.linux64.carbon"/>
+        <meta key="device" value="ATxmega192C3"/>
+      </resource>
+    </resources>
+  </content>
+  <pdsc xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" compliant="false">
+		<releases>
+			<release version="1.1.BUILDNUMBER">Updated ADC and MUX modules in headers. Enums generated according to AVR-1000.</release>
+			<release version="1.0.29">Updated documentation links.</release>
+			<release version="1.0.27">Initial release.</release>
+		</releases>
+	</pdsc>
+</package>
